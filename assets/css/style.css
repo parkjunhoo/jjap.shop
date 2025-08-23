@@ -1,0 +1,1674 @@
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* 컨테이너 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 네비게이션 */
+.main-navigation {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #007bff;
+    background: #f0f8ff;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+    min-height: calc(100vh - 70px - 200px);
+}
+
+/* 히어로 섹션 */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #ffd700;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: #ffd700;
+    color: #333;
+}
+
+.btn-primary:hover {
+    background: #ffed4e;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #333;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.btn-outline:hover {
+    background: #333;
+    color: white;
+}
+
+.btn-youtube {
+    background: #ff0000;
+    color: white;
+    border: 2px solid #ff0000;
+    transition: all 0.3s ease;
+}
+
+.btn-youtube:hover {
+    background: #cc0000;
+    border-color: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.hero-image {
+    text-align: center;
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* 섹션 공통 스타일 */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 도구 섹션 */
+.tools-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.tool-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: #007bff;
+}
+
+.tool-card.coming-soon {
+    opacity: 0.7;
+}
+
+.tool-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.tool-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.tool-description {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.tool-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    background: #f0f8ff;
+    color: #007bff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tool-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.tool-link:hover {
+    color: #0056b3;
+}
+
+.coming-soon-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ffc107;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* 크리에이터 섹션 */
+.creator-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.creator-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.creator-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.creator-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.creator-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.creator-image {
+    text-align: center;
+}
+
+.creator-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 사용법 안내 섹션 */
+.guide-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.guide-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.guide-step {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.guide-step h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.guide-step p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 문의 섹션 */
+.contact-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-option {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-option:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.contact-option h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.contact-option p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #0056b3;
+}
+
+/* 푸터 */
+.main-footer {
+    background: #333;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.footer-section p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffd700;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #ccc;
+}
+
+/* 버튼 아이콘 */
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .creator-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .creator-stats {
+        justify-content: center;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .guide-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ========================================
+   짭카오톡 페이지 스타일
+======================================== */
+
+/* 짭카오톡 전용 body 스타일 */
+.jjapkakao-page {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 앱 컨테이너 */
+#app {
+    width: 400px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+/* 채팅방 헤더 */
+#app .header {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 50px;
+}
+
+.back-arrow {
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.num-participants {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-right: 8px;
+}
+
+.chat-room-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-icon {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* 채팅 영역 */
+.chat-area {
+    height: 400px;
+    overflow-y: auto;
+    padding: 16px;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+.chat-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+/* 메시지 스타일 */
+.message {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.message:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.message.my-message {
+    flex-direction: row-reverse;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 8px 4px 0;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.my-message .profile-pic {
+    margin: 0 0 4px 8px;
+}
+
+.message-content {
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-name {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.my-message .sender-name {
+    text-align: right;
+}
+
+.message-bubble {
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 18px;
+    border: 1px solid #e1e5e9;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.my-message .message-bubble {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+}
+
+.message-time {
+    font-size: 10px;
+    color: #999;
+    margin: 4px 8px 0;
+    align-self: flex-end;
+}
+
+.my-message .message-time {
+    align-self: flex-start;
+}
+
+/* 이미지 메시지 */
+.message-image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.message-image:hover {
+    transform: scale(1.02);
+}
+
+/* 입력 영역 */
+.input-area {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: white;
+    border-top: 1px solid #e1e5e9;
+}
+
+.plus-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.plus-button:hover {
+    background-color: #f0f0f0;
+}
+
+.sender-select {
+    margin: 0 8px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 12px;
+    background-color: white;
+}
+
+.message-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 12px;
+    margin: 0 8px;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.message-input:focus {
+    border-color: #4a90e2;
+}
+
+.send-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.send-button:hover {
+    background-color: #357abd;
+}
+
+/* 대화중지 영역 */
+.stop-area {
+    background-color: #fff3cd;
+    border-top: 1px solid #ffeaa7;
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.stop-button {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.stop-button:hover {
+    background-color: #e0a800;
+}
+
+/* 사이드바 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-left-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.help-button, .reset-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.help-button:hover, .reset-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.close-sidebar {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.sidebar-content h3 {
+    color: #333;
+    font-size: 16px;
+    margin: 20px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e1e5e9;
+}
+
+/* 참가자 목록 */
+.participant-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.participant-item:hover {
+    background-color: #e9ecef;
+}
+
+.participant-item .profile-pic {
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+}
+
+.participant-info {
+    flex-grow: 1;
+}
+
+.participant-name {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.participant-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.edit-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #138496;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* 새 참가자 추가 */
+.add-participant-form {
+    background-color: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.new-participant-preview {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.new-participant-preview.clickable:hover {
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+.preview-profile-pic {
+    position: relative;
+    cursor: pointer;
+}
+
+.preview-profile-pic img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 18px;
+}
+
+.preview-profile-pic:hover .upload-overlay {
+    opacity: 1;
+}
+
+.preview-name {
+    margin-left: 12px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+#inline-name-input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#add-participant-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+#add-participant-button:hover {
+    background-color: #218838;
+}
+
+/* 채팅방 설정 */
+.chat-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.setting-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.setting-item label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.setting-item input[type="text"],
+.setting-item input[type="number"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.setting-item input[type="range"] {
+    width: 100%;
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.setting-item button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.setting-item button:hover {
+    background-color: #0056b3;
+}
+
+.participant-count-setting {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.count-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+/* 글꼴 설정 */
+.font-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.font-settings label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.font-settings input[type="range"] {
+    width: 100%;
+}
+
+/* 스크립트 관리 */
+.script-management {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.script-management button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.script-management button:not(.danger-button):not(.play-button) {
+    background-color: #007bff;
+    color: white;
+}
+
+.script-management button:not(.danger-button):not(.play-button):hover {
+    background-color: #0056b3;
+}
+
+.play-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.play-button:hover {
+    background-color: #218838;
+}
+
+.danger-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.danger-button:hover {
+    background-color: #c82333;
+}
+
+#script-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    resize: vertical;
+}
+
+/* 영상 생성 */
+.video-generation {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.generate-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.generate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.generation-progress {
+    background-color: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4a90e2, #357abd);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* 유튜브 섹션 */
+.youtube-section {
+    margin-top: 20px;
+    padding: 16px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    border-radius: 8px;
+}
+
+.youtube-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.youtube-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.youtube-icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+}
+
+.youtube-text {
+    flex-grow: 1;
+}
+
+.youtube-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.youtube-arrow {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal input[type="text"],
+.modal input[type="time"],
+.modal input[type="number"],
+.modal input[type="file"],
+.modal textarea {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.modal textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.modal button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+.modal button:last-child {
+    margin-right: 0;
+}
+
+/* 메시지 타입 선택 */
+.message-type-selector {
+    margin-bottom: 20px;
+}
+
+.type-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.type-btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.type-btn.active {
+    border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+}
+
+.type-btn:hover {
+    border-color: #007bff;
+}
+
+/* 이미지 업로드 */
+.image-upload-container {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+.image-upload-container:hover {
+    border-color: #007bff;
+}
+
+.image-size-control {
+    margin-top: 15px;
+}
+
+.size-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.size-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.size-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* 이미지 모달 */
+.image-modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 0;
+}
+
+.image-modal-wrapper {
+    text-align: center;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+}
+
+/* 영상 모달 */
+.video-modal-content {
+    max-width: 800px;
+    width: 90%;
+}
+
+.video-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.video-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.video-control-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.video-modal-wrapper {
+    text-align: center;
+}
+
+#modal-video {
+    width: 100%;
+    max-height: 60vh;
+    border-radius: 8px;
+}
+
+.video-save-notice {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #e7f3ff;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #0066cc;
+}
+
+/* 메시지 오버레이 */
+.message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* 다크모드 */
+body.dark-mode {
+    background-color: #1a1a1a;
+}
+
+.dark-mode #app {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .chat-area {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .message-bubble {
+    background-color: #3a3a3a;
+    color: white;
+    border-color: #555;
+}
+
+.dark-mode .my-message .message-bubble {
+    background-color: #4a90e2;
+}
+
+.dark-mode .input-area {
+    background-color: #2d2d2d;
+    border-color: #555;
+}
+
+.dark-mode .message-input {
+    background-color: #3a3a3a;
+    color: white;
+    border-color: #555;
+}
+
+.dark-mode .sender-select {
+    background-color: #3a3a3a;
+    color: white;
+    border-color: #555;
+}
+
+.dark-mode .sidebar {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .sidebar-content {
+    color: white;
+}
+
+.dark-mode .participant-item {
+    background-color: #3a3a3a;
+}
+
+.dark-mode .add-participant-form {
+    background-color: #3a3a3a;
+}
+
+/* 반응형 디자인 - 짭카오톡 */
+@media (max-width: 768px) {
+    #app {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .chat-area {
+        flex-grow: 1;
+        height: auto;
+    }
+    
+    .sidebar {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        max-height: 90vh;
+    }
+}
