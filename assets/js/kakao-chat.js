@@ -60,7 +60,7 @@ if (window.kakaoChatInitialized) {
             const menuButton = document.getElementById('menu-button');
             if (menuButton) {
                 menuButton.addEventListener('click', function() {
-                    console.log('Menu button clicked'); // 디버깅용
+            
                     window.toggleSidebar();
                 });
             }
@@ -266,17 +266,17 @@ if (window.kakaoChatInitialized) {
             const themeToggle = document.getElementById('chat-dark-mode-toggle');
             if (themeToggle) {
                 const isDarkMode = themeToggle.checked;
-                console.log('Theme toggle changed:', isDarkMode); // 디버깅용
+        
                 localStorage.setItem('kakao-chat-dark-mode', isDarkMode);
                 
                 const container = document.querySelector('.kakao-chat-container');
                 if (container) {
                     if (isDarkMode) {
                         container.classList.add('chat-dark-mode');
-                        console.log('Added chat-dark-mode class'); // 디버깅용
+         // 디버깅용
                     } else {
                         container.classList.remove('chat-dark-mode');
-                        console.log('Removed chat-dark-mode class'); // 디버깅용
+         // 디버깅용
                     }
                 } else {
                     console.warn('Container not found'); // 디버깅용
@@ -364,7 +364,7 @@ if (window.kakaoChatInitialized) {
             if (modal) {
                 modal.style.display = 'flex';
                 document.getElementById('new-participant-name').value = '';
-                document.getElementById('new-participant-pic').src = '../assets/images/dfp.jpg';
+                document.getElementById('new-participant-pic').src = '../assets/images/dfp.webp';
             }
         };
 
@@ -414,7 +414,7 @@ if (window.kakaoChatInitialized) {
                 confirmButtonColor: '#28a745'
             }).then(() => {
                 nameInput.value = '';
-                picImg.src = '../assets/images/dfp.jpg';
+                picImg.src = '../assets/images/dfp.webp';
             });
         }
 
@@ -780,14 +780,14 @@ if (window.kakaoChatInitialized) {
 
         // 현재 폰트 설정을 적용하는 함수
         function applyCurrentFontSettings(messageElement) {
-            console.log('Applying font settings to message element:', messageElement);
+    
             // 메시지 글꼴 크기
             const messageFontSize = localStorage.getItem('kakao-chat-message-font-size');
             if (messageFontSize) {
                 const messageBubble = messageElement.querySelector('.message-bubble');
                 if (messageBubble) {
                     messageBubble.style.fontSize = messageFontSize + 'px';
-                    console.log('Applied message font size:', messageFontSize + 'px');
+        
                 }
             }
             
@@ -797,7 +797,7 @@ if (window.kakaoChatInitialized) {
                 const messageBubble = messageElement.querySelector('.message-bubble');
                 if (messageBubble) {
                     messageBubble.style.fontFamily = messageFontFamily;
-                    console.log('Applied message font family:', messageFontFamily);
+        
                 }
             }
             
@@ -807,7 +807,7 @@ if (window.kakaoChatInitialized) {
                 const messageBubble = messageElement.querySelector('.message-bubble');
                 if (messageBubble) {
                     messageBubble.style.fontWeight = messageFontWeight;
-                    console.log('Applied message font weight:', messageFontWeight);
+        
                 }
             }
             
@@ -817,7 +817,7 @@ if (window.kakaoChatInitialized) {
                 const senderName = messageElement.querySelector('.sender-name');
                 if (senderName) {
                     senderName.style.fontSize = senderFontSize + 'px';
-                    console.log('Applied sender font size:', senderFontSize + 'px');
+        
                 }
             }
             
@@ -827,7 +827,7 @@ if (window.kakaoChatInitialized) {
                 const senderName = messageElement.querySelector('.sender-name');
                 if (senderName) {
                     senderName.style.fontWeight = senderFontWeight;
-                    console.log('Applied sender font weight:', senderFontWeight);
+        
                 }
             }
             
@@ -837,7 +837,7 @@ if (window.kakaoChatInitialized) {
                 const messageTime = messageElement.querySelector('.message-time');
                 if (messageTime) {
                     messageTime.style.fontSize = timestampFontSize + 'px';
-                    console.log('Applied timestamp font size:', timestampFontSize + 'px');
+        
                 }
             }
             
@@ -848,7 +848,7 @@ if (window.kakaoChatInitialized) {
                 if (profilePic) {
                     profilePic.style.width = profilePicSize + 'px';
                     profilePic.style.height = profilePicSize + 'px';
-                    console.log('Applied profile pic size:', profilePicSize + 'px');
+        
                 }
             }
         }
@@ -1332,7 +1332,7 @@ if (window.kakaoChatInitialized) {
                     }
                 }
                 
-                console.log('사용할 영상 형식:', mimeType);
+        
                 
                 const stream = canvas.captureStream(60); // 60fps로 증가
                 const mediaRecorder = new MediaRecorder(stream, {
@@ -1343,14 +1343,14 @@ if (window.kakaoChatInitialized) {
                 const chunks = [];
                 
                 mediaRecorder.ondataavailable = (event) => {
-                    console.log('MediaRecorder data available:', event.data.size, 'bytes');
+        
                     if (event.data.size > 0) {
                         chunks.push(event.data);
                     }
                 };
                 
                 mediaRecorder.onstart = () => {
-                    console.log('MediaRecorder 녹화 시작됨');
+        
                 };
                 
                 mediaRecorder.onerror = (event) => {
@@ -1485,7 +1485,7 @@ if (window.kakaoChatInitialized) {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         ctx.drawImage(canvasResult, 0, 0, canvas.width, canvas.height);
                         
-                        console.log(`프레임 ${currentIndex + 1}/${totalMessages} 캡쳐 완료 (${isDarkMode ? '다크' : '라이트'}모드)`);
+        
                         
                     } catch (error) {
                         console.error('프레임 캡쳐 오류:', error);
@@ -1563,7 +1563,7 @@ if (window.kakaoChatInitialized) {
                 participants = [{
                     id: 1,
                     name: '나',
-                    profilePic: '../assets/images/dfp.jpg'
+                    profilePic: '../assets/images/dfp.webp'
                 }];
 
             } catch (error) {
@@ -1602,19 +1602,17 @@ if (window.kakaoChatInitialized) {
             const container = document.querySelector('.kakao-chat-container');
             const themeToggle = document.getElementById('chat-dark-mode-toggle');
             
-            console.log('Loading dark mode setting:', savedDarkMode); // 디버깅용
-            console.log('Container found:', !!container); // 디버깅용
-            console.log('Theme toggle found:', !!themeToggle); // 디버깅용
+            
             
             if (container && themeToggle) {
                 if (savedDarkMode === 'true') {
                     container.classList.add('chat-dark-mode');
                     themeToggle.checked = true;
-                    console.log('Applied dark mode on load'); // 디버깅용
+     // 디버깅용
                 } else {
                     container.classList.remove('chat-dark-mode');
                     themeToggle.checked = false;
-                    console.log('Applied light mode on load'); // 디버깅용
+     // 디버깅용
                 }
             } else {
                 console.warn('Container or theme toggle not found during UI update'); // 디버깅용

@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6901124389391205" crossorigin="anonymous"></script>
     
     <!-- SEO 메타 태그 -->
     <title>짭샵 - 크리에이터를 위한 도구 모음</title>
@@ -20,7 +18,7 @@
     <meta property="og:description" content="크리에이터들을 위한 무료 도구를 제공합니다. 카카오톡 대화 만들기 툴을 무료로 사용할 수 있습니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jjap.shop">
-    <meta property="og:image" content="https://jjap.shop/assets/images/jjap.png">
+    <meta property="og:image" content="https://jjap.shop/assets/images/jjapshoplogo.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="짭샵">
@@ -30,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="짭샵 - 크리에이터를 위한 도구 모음 | 무료 온라인 툴">
     <meta name="twitter:description" content="크리에이터들을 위한 무료 도구를 제공합니다. 카카오톡 대화 만들기 툴을 무료로 사용할 수 있습니다.">
-    <meta name="twitter:image" content="https://jjap.shop/assets/images/jjap.png">
+    <meta name="twitter:image" content="https://jjap.shop/assets/images/jjapshoplogo.webp">
     
     <!-- 추가 SEO 메타 태그 -->
     <meta name="language" content="ko">
@@ -39,23 +37,26 @@
     <meta name="rating" content="general">
     <meta name="theme-color" content="#007bff">
     <meta name="msapplication-TileColor" content="#007bff">
+    <meta name="naver-site-verification" content="9d67c4fd81679f6e3e8cb8677768fac28df5c793" />
+    <meta name="google-site-verification" content="qyDw0OBRxg_dcLX-NSQKw-3iD-za7U3nt2j2-zinAmI" />
+    
+
     <link rel="canonical" href="https://jjap.shop">
     <link rel="alternate" hreflang="ko" href="https://jjap.shop">
     <link rel="alternate" hreflang="x-default" href="https://jjap.shop">
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <!-- 파비콘 설정 -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon-48x48.png">
+            <link rel="icon" type="image/webp" sizes="16x16" href="assets/images/jjapshoplogo.webp">
+        <link rel="icon" type="image/webp" sizes="32x32" href="assets/images/jjapshoplogo.webp">
+        <link rel="icon" type="image/webp" sizes="48x48" href="assets/images/jjapshoplogo.webp">
     
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="assets/images/jjapshoplogo.webp">
     
     <!-- Windows 타일 아이콘 -->
     <meta name="msapplication-TileColor" content="#007bff">
-    <meta name="msapplication-TileImage" content="assets/images/mstile-144x144.png">
+            <meta name="msapplication-TileImage" content="assets/images/jjapshoplogo.webp">
 </head>
 <body>
     <!-- 구조화된 데이터 (JSON-LD) -->
@@ -81,7 +82,7 @@
             "name": "짭샵",
             "logo": {
                 "@type": "ImageObject",
-                "url": "assets/images/jjap.png"
+                "url": "assets/images/jjapshoplogo.webp"
             }
         }
     }
@@ -96,14 +97,14 @@
     <!-- 공용 헤더 -->
     <?php include_once 'includes/header.php'; ?>
 
-    <!-- 헤더 아래 광고 영역 -->
-    <div class="ad-container ad-header">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6901124389391205"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+    <!-- 헤더 아래 콘텐츠 영역 -->
+    <div class="content-section content-header">
+        <div class="container">
+            <div class="content-placeholder">
+                <h3>🚀 크리에이터 도구를 무료로 사용해보세요!</h3>
+                <p>카카오톡 대화 만들기, 썸네일 텍스트 편집기 등 다양한 도구를 제공합니다.</p>
+            </div>
+        </div>
     </div>
 
     <!-- 메인 히어로 섹션 -->
@@ -120,8 +121,16 @@
                         <img src="assets/images/kakao.svg" alt="카카오톡" class="btn-icon">
                         카카오톡 대화 만들기
                     </a>
+                    <a href="/thumbnail-text" class="btn btn-orange">
+                        <img src="assets/images/font.webp" alt="폰트" class="btn-icon">
+                        썸네일 텍스트 만들기
+                    </a>
+                    <a href="/obs-browser-source" class="btn btn-green">
+                        <img src="assets/images/obs.webp" alt="OBS" class="btn-icon">
+                        OBS 브라우저 소스
+                    </a>
                     <a href="https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80" target="_blank" class="btn btn-secondary">
-                        <img src="assets/images/핵돌핀.png" alt="핵돌핀" class="btn-icon">
+                        <img src="assets/images/hackdolphin.webp" alt="핵돌핀" class="btn-icon">
                         핵돌핀 유튜브
                     </a>
                 </div>
@@ -171,20 +180,57 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/images/jjap.png" alt="짭샵 소개 이미지" class="about-img">
+                    <img src="assets/images/jjapshoplogo.webp" alt="짭샵 소개 이미지" class="about-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 푸터 위 광고 영역 -->
-    <div class="ad-container ad-footer">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6901124389391205"
-             data-ad-slot="0987654321"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+    <!-- 도구 목록 섹션 -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">사용 가능한 도구들</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">💬</div>
+                    <div class="tool-content">
+                        <h3>카카오톡 대화 만들기</h3>
+                        <p>가상의 카카오톡 대화를 만들고 편집할 수 있는 도구입니다.</p>
+                        <a href="/kakao-chat" class="tool-link">사용하기</a>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <img src="assets/images/jjapshoplogo.webp" alt="폰트 아이콘" class="tool-icon-img">
+                    </div>
+                    <div class="tool-content">
+                        <h3>썸네일 텍스트 편집기</h3>
+                        <p>유튜브 썸네일에 들어갈 텍스트를 예쁘게 꾸며서 PNG로 다운로드할 수 있습니다.</p>
+                        <a href="/thumbnail-text" class="tool-link">사용하기</a>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <img src="assets/images/obs.webp" alt="OBS 아이콘" class="tool-icon-img">
+                    </div>
+                    <div class="tool-content">
+                        <h3>OBS 브라우저 소스</h3>
+                        <p>OBS 스트리밍을 위한 다양한 오버레이 도구들입니다. 주사위, 사다리타기, 랜덤 숫자 등.</p>
+                        <a href="/obs-browser-source" class="tool-link">사용하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 위 콘텐츠 영역 -->
+    <div class="content-section content-footer">
+        <div class="container">
+            <div class="content-placeholder">
+                <h3>💡 더 많은 도구가 준비 중입니다!</h3>
+                <p>크리에이터를 위한 다양한 도구를 계속 개발하고 있습니다.</p>
+            </div>
+        </div>
     </div>
 
     <!-- 연락처 섹션 -->
@@ -203,13 +249,13 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <img src="assets/images/Youtube_logo.png" alt="YouTube" class="contact-icon-img">
+                            <img src="assets/images/Youtube_logo.webp" alt="YouTube" class="contact-icon-img">
                         </div>
                         <div class="contact-details">
                             <h4>유튜브</h4>
                             <p>핵돌핀 유튜브 채널 놀러와 주세요</p>
                             <a href="https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80" target="_blank" class="youtube-link">
-                                <img src="assets/images/핵돌핀.png" alt="핵돌핀" class="youtube-icon">
+                                <img src="assets/images/hackdolphin.webp" alt="핵돌핀" class="youtube-icon">
                                 핵돌핀 유튜브 바로가기
                             </a>
                         </div>
@@ -222,11 +268,7 @@
     <!-- 공용 푸터 -->
     <?php include_once 'includes/footer.php'; ?>
 
-    <!-- Google AdSense 자동 광고 코드 -->
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+
     
     <script src="assets/js/main.js"></script>
 </body>

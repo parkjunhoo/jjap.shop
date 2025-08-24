@@ -73,29 +73,41 @@ body {
     color: #007bff;
 }
 
-/* 애드센스 광고 컨테이너 */
-.ad-container {
-    background-color: #1a1a1a;
-    padding: 20px;
+/* 콘텐츠 섹션 */
+.content-section {
+    background-color: #2d2d2d;
+    padding: 40px 20px;
     text-align: center;
-    min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-.ad-container.ad-header {
+.content-section.content-header {
     margin-top: 70px;
 }
 
-.ad-container.ad-footer {
+.content-section.content-footer {
     margin-bottom: 0;
 }
 
-.ad-container ins {
-    max-width: 100%;
-    height: auto;
+.content-placeholder {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-placeholder h3 {
+    color: #fee500;
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.content-placeholder p {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 /* 히어로 섹션 */
@@ -176,6 +188,28 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-orange {
+    background-color: #ff6b35;
+    color: white;
+}
+
+.btn-orange:hover {
+    background-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.btn-green {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-green:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
 .btn-icon {
     width: 20px;
     height: 20px;
@@ -227,6 +261,15 @@ body {
 .tool-icon {
     font-size: 48px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-icon-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
 }
 
 .tool-title {

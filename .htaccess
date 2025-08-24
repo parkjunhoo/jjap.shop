@@ -10,6 +10,13 @@ RewriteRule ^$ index.php [L]
 # 카카오톡 대화 만들기 페이지 (jjap.shop/kakao-chat -> pages/kakao-chat.php)
 RewriteRule ^kakao-chat/?$ pages/kakao-chat.php [L]
 
+# 썸네일 텍스트 편집기 페이지 (jjap.shop/thumbnail-text -> pages/thumbnail-text.php)
+RewriteRule ^thumbnail-text/?$ pages/thumbnail-text.php [L]
+
+# OBS 브라우저 소스 페이지 (jjap.shop/obs-browser-source -> pages/obs-browser-source.php)
+RewriteRule ^obs-browser-source/?$ pages/obs-browser-source.php [L]
+RewriteRule ^obs-popup/(.*)$ obs-popup/$1 [L]
+
 # .php 확장자 제거 (기존 .php 파일들)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

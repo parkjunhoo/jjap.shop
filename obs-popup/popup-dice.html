@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 - OBS 브라우저 소스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: transparent;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            user-select: none;
+        }
+
+        .dice-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .display-area {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20vh;
+        }
+
+        .dice {
+            font-size: 15rem;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .dice.rolling {
+            animation: roll 0.5s infinite;
+        }
+
+        @keyframes roll {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .result {
+            font-size: 15rem;
+            font-weight: 900;
+            color: #667eea;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+            letter-spacing: -2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .result.show {
+            display: flex;
+        }
+
+        .result-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, rgba(102, 126, 234, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            border: 2px solid rgba(102, 126, 234, 0.4);
+            box-shadow: 
+                0 0 60px rgba(102, 126, 234, 0.25),
+                inset 0 0 60px rgba(102, 126, 234, 0.1),
+                0 0 120px rgba(102, 126, 234, 0.1);
+            display: none;
+            z-index: -1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+        }
+
+        .result-background.show {
+            display: block;
+        }
+
+        .control-area {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+            padding: 0 20px;
+            border-radius: 0;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .control-group label {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+
+        .control-group input {
+            width: 70px;
+            padding: 6px 10px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .control-group input:focus {
+            outline: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9));
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .start-btn:hover::before {
+            left: 100%;
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6b46c1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .hide-btn {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hide-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hide-btn:hover::before {
+            left: 100%;
+        }
+
+        .hide-btn:hover {
+            background: linear-gradient(135deg, #5a6268, #343a40);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .hide-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(108, 117, 125, 0.4);
+        }
+
+        .help-text {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            margin-top: 3px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .background-area {
+            width: 100vw;
+            height: 100vh;
+            background: transparent;
+            display: none;
+            cursor: pointer;
+        }
+
+        .background-area.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="dice-container" id="diceContainer">
+        <div class="display-area" id="displayArea">
+            <div class="dice" id="dice">🎲</div>
+            <div class="result-background" id="resultBackground"></div>
+            <div class="result" id="result"></div>
+        </div>
+        
+        <div class="control-area" id="controlArea">
+            <div class="control-group">
+                <label for="min-input">최소값:</label>
+                <input type="number" id="min-input" value="1" min="-999" max="999">
+                <div class="help-text">(포함)</div>
+            </div>
+            <div class="control-group">
+                <label for="max-input">최대값:</label>
+                <input type="number" id="max-input" value="6" min="-999" max="999">
+                <div class="help-text">(포함)</div>
+            </div>
+            <button class="start-btn" id="startBtn">🎲 주사위 굴리기</button>
+            <button class="hide-btn" id="hideBtn">🙈 숨기기</button>
+        </div>
+    </div>
+
+    <div class="background-area" id="backgroundArea"></div>
+
+    <script>
+        // URL 파라미터에서 설정값 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        let min = parseInt(urlParams.get('min')) || 1;
+        let max = parseInt(urlParams.get('max')) || 6;
+
+        // 입력 필드에 초기값 설정
+        document.getElementById('min-input').value = min;
+        document.getElementById('max-input').value = max;
+
+        let isRolling = false;
+
+        // 입력값 변경 감지
+        document.getElementById('min-input').addEventListener('input', function() {
+            min = parseInt(this.value) || 1;
+        });
+
+        document.getElementById('max-input').addEventListener('input', function() {
+            max = parseInt(this.value) || 6;
+        });
+
+        // 주사위 굴리기 함수
+        function rollDice() {
+            if (isRolling) return;
+            
+            isRolling = true;
+            const startBtn = document.getElementById('startBtn');
+            const dice = document.getElementById('dice');
+            const result = document.getElementById('result');
+            const resultBackground = document.getElementById('resultBackground');
+            
+            // 버튼 비활성화
+            startBtn.disabled = true;
+            startBtn.textContent = '굴리는 중...';
+            
+            // 주사위 애니메이션 시작
+            dice.classList.add('rolling');
+            result.classList.remove('show');
+            resultBackground.classList.remove('show');
+            
+            // 3~5초 랜덤 후 결과 표시
+            const randomTime = Math.random() * 2000 + 3000; // 3000ms ~ 5000ms
+            
+            setTimeout(() => {
+                dice.classList.remove('rolling');
+                
+                // 랜덤 결과 생성 (최소값과 최대값 포함)
+                const randomResult = Math.floor(Math.random() * (max - min + 1)) + min;
+                result.textContent = randomResult;
+                result.classList.add('show');
+                resultBackground.classList.add('show');
+                
+                // 주사위는 그대로 표시 (숨기지 않음)
+                
+                // 버튼 재활성화
+                isRolling = false;
+                startBtn.disabled = false;
+                startBtn.textContent = '🎲 다시 굴리기';
+            }, randomTime);
+        }
+
+        // 숨기기 함수
+        function hideAll() {
+            const diceContainer = document.getElementById('diceContainer');
+            const backgroundArea = document.getElementById('backgroundArea');
+            const startBtn = document.getElementById('startBtn');
+            
+            // 주사위 컨테이너 숨기기
+            diceContainer.style.display = 'none';
+            
+            // 배경 영역 표시
+            backgroundArea.classList.add('show');
+            
+            // 주사위 상태 초기화
+            startBtn.textContent = '🎲 주사위 굴리기';
+        }
+
+        // UI 표시 함수
+        function showUI() {
+            const diceContainer = document.getElementById('diceContainer');
+            const backgroundArea = document.getElementById('backgroundArea');
+            const dice = document.getElementById('dice');
+            
+            // 배경 영역 숨기기
+            backgroundArea.classList.remove('show');
+            
+            // 주사위 컨테이너 표시
+            diceContainer.style.display = 'flex';
+            
+            // 주사위 표시
+            dice.style.display = 'block';
+        }
+
+        // 이벤트 리스너 설정
+        document.getElementById('startBtn').addEventListener('click', rollDice);
+        document.getElementById('hideBtn').addEventListener('click', hideAll);
+        
+        // 배경 영역 클릭 시 UI 표시
+        document.getElementById('backgroundArea').addEventListener('click', function() {
+            showUI();
+        });
+
+        // 키보드 지원
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const backgroundArea = document.getElementById('backgroundArea');
+                
+                // 배경 영역이 표시되어 있을 때만 Enter/Space로 UI 표시
+                if (backgroundArea.classList.contains('show')) {
+                    showUI();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

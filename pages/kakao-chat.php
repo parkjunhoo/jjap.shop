@@ -3,7 +3,7 @@ $page_title = '짭카오톡 - 카카오톡 대화 만들기 툴 | 무료 채팅�
 $page_description = '카카오톡 대화 내용을 자유롭게 만들고 수정할 수 있는 무료 툴입니다. 가상 채팅방, 메시지 편집, 참가자 관리, 채팅 시뮬레이터 기능을 제공합니다.';
 $page_keywords = '카카오톡, 대화만들기, 채팅방, 메시지편집, 가상채팅, 카톡시뮬레이터, 채팅도구, 메신저툴, 무료, 온라인, 웹툴';
 $page_url = 'https://jjap.shop/kakao-chat';
-$page_image = 'https://jjap.shop/assets/images/jjap.png';
+$page_image = 'https://jjap.shop/assets/images/jjapshoplogo.webp';
 $page_css = '../assets/css/kakao-chat.css';
 $page_js = '../assets/js/kakao-chat.js';
 $body_class = 'kakao-chat-page';
@@ -15,8 +15,7 @@ echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
 // html2canvas 추가
 echo '<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>';
 
-// Google AdSense 추가
-echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6901124389391205" crossorigin="anonymous"></script>';
+
 
 // 구조화된 데이터 (JSON-LD) 추가
 $structured_data = array(
@@ -44,7 +43,7 @@ $structured_data = array(
     ),
     "datePublished" => "2024-01-01",
     "dateModified" => date('Y-m-d'),
-    "screenshot" => "https://jjap.shop/assets/images/jjap.png",
+            "screenshot" => "https://jjap.shop/assets/images/jjapshoplogo.webp",
     "featureList" => array(
         "가상 채팅방 생성",
         "메시지 편집 및 수정",
@@ -57,11 +56,7 @@ $structured_data = array(
 
 echo '<script type="application/ld+json">' . json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>';
 
-// 구글 애드센스 자동 광고 코드 추가
-echo '<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>';
+
 ?>
 
 <!-- 카카오톡 채팅 인터페이스 -->
@@ -167,7 +162,7 @@ echo '<script>
                 <h4>새 참가자 추가</h4>
                 <div class="participant-preview">
                     <div class="profile-pic-container">
-                        <img id="new-participant-pic" src="../assets/images/dfp.jpg" alt="프로필 미리보기" onclick="document.getElementById('profile-pic-input').click()" style="cursor: pointer;">
+                        <img id="new-participant-pic" src="../assets/images/dfp.webp" alt="프로필 미리보기" onclick="document.getElementById('profile-pic-input').click()" style="cursor: pointer;">
                         <button class="change-pic-btn" onclick="document.getElementById('profile-pic-input').click()">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                 <path d="M21 15V19A2 2 0 0119 21H5A2 2 0 013 19V15M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -322,7 +317,7 @@ echo '<script>
         <div class="youtube-section">
             <a href="https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80" target="_blank" class="youtube-link">
                 <div class="youtube-content">
-                    <img src="../assets/images/youtube.png" alt="YouTube" class="youtube-icon">
+                    <img src="../assets/images/youtube.webp" alt="YouTube" class="youtube-icon">
                     <div class="youtube-text">
                         <span class="youtube-title">핵돌핀<br>Youtube</span>
                     </div>

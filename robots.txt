@@ -14,9 +14,7 @@ Allow: /includes/
 
 # 특정 파일 허용
 Allow: /*.php
-Allow: /*.css
-Allow: /*.js
-Allow: /*.png
+Allow: /*.webp
 Allow: /*.jpg
 Allow: /*.jpeg
 Allow: /*.gif

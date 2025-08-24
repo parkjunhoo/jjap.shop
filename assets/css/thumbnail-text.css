@@ -1,0 +1,825 @@
+/* 썸네일 텍스트 편집기 스타일 */
+.thumbnail-editor {
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 25%, #2d1b69 50%, #1a1a3a 75%, #0f0f23 100%);
+    min-height: 100vh;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    text-align: center;
+    color: #f8f9ff;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 
+        0 0 20px rgba(138, 43, 226, 0.6),
+        0 0 40px rgba(138, 43, 226, 0.4),
+        2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 300;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-description {
+    text-align: center;
+    color: rgba(248, 249, 255, 0.85);
+    font-size: 1.2rem;
+    margin-bottom: 3.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.editor-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 설정 패널 */
+.settings-panel {
+    background: linear-gradient(135deg, #2a2a4e 0%, #3a3a5e 50%, #2a2a4e 100%);
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(138, 43, 226, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    height: fit-content;
+    border: 1px solid #4a4a6e;
+    backdrop-filter: blur(10px);
+}
+
+.settings-panel h2 {
+    color: #f8f9ff;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #8a2be2;
+    padding-bottom: 0.75rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.setting-group {
+    margin-bottom: 1.5rem;
+}
+
+.setting-group label {
+    display: block;
+    font-weight: 600;
+    color: #c0c0c0;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #4a4a5e;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: #3a3a4e;
+    color: #e0e0e0;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    background: #4a4a5e;
+}
+
+.form-range {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e1e5e9;
+    outline: none;
+    margin: 0.5rem 0;
+}
+
+.form-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.help-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    line-height: 1.4;
+    background: #3a3a4e;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #4a4a5e;
+    border-left: 4px solid #667eea;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #c0c0c0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8a2be2 0%, #9370db 50%, #8a2be2 100%);
+    color: white;
+    border-radius: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 
+        0 8px 25px rgba(138, 43, 226, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(138, 43, 226, 0.4),
+        0 8px 25px rgba(138, 43, 226, 0.2);
+    background: linear-gradient(135deg, #9d4edd 0%, #a855f7 50%, #9d4edd 100%);
+}
+
+/* 미리보기 패널 */
+.preview-panel {
+    background: linear-gradient(135deg, #2a2a4e 0%, #3a3a5e 50%, #2a2a4e 100%);
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(138, 43, 226, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid #4a4a6e;
+    backdrop-filter: blur(10px);
+}
+
+.preview-panel h2 {
+    color: #f8f9ff;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #8a2be2;
+    padding-bottom: 0.75rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.preview-container {
+     background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 50%, #1a1a2e 100%);
+     border: 2px dashed #8a2be2;
+     border-radius: 20px;
+     padding: 2.5rem;
+     min-height: 400px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 1.5rem;
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     overflow: auto; /* 내용이 넘칠 때 스크롤바 표시 */
+     white-space: nowrap; /* 줄바꿈 방지 */
+     box-shadow: 
+         0 15px 45px rgba(0, 0, 0, 0.4),
+         inset 0 1px 0 rgba(255, 255, 255, 0.05);
+     /* 스크롤 동작 개선 */
+     scroll-behavior: smooth;
+     -webkit-overflow-scrolling: touch;
+ }
+
+
+
+.text-preview {
+     padding: 2rem 2.5rem;
+     border-radius: 18px;
+     text-align: center;
+     white-space: nowrap; /* 줄바꿈 방지 */
+     overflow: visible;
+     max-width: none;
+     min-width: max-content; /* 텍스트 내용에 맞는 최소 너비 */
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     cursor: pointer;
+     
+     /* 텍스트 렌더링 최적화 */
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     text-rendering: optimizeLegibility;
+     font-feature-settings: "kern" 1;
+     font-kerning: normal;
+     
+     /* 그림자 효과 제거 */
+ }
+
+.text-preview:hover {
+    transform: scale(1.03) translateY(-2px);
+    /* 그림자 효과 제거 */
+}
+
+.preview-info {
+    background: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+}
+
+.preview-info p {
+    margin: 0.5rem 0;
+    color: #1976d2;
+    font-size: 0.9rem;
+}
+
+ /* 새로운 유튜브 썸네일 최적화 템플릿 */
+ .template-impact {
+     color: #ffffff;
+     font-weight: 900;
+     text-shadow: 4px 4px 0px rgba(0,0,0,0.8), 8px 8px 0px rgba(0,0,0,0.6);
+     letter-spacing: 2px;
+ }
+ 
+ .template-fire {
+    font-weight: 900;
+    /* 사용자 색상이 우선 적용되도록 기본값만 설정 */
+    text-shadow: 
+        2px 2px 4px rgba(0,0,0,0.8),
+        /* 이글거리는 뒷 레이어 */
+        2px 2px 48px rgba(255, 69, 0, 0.3),
+        -2px 1px 56px rgba(255, 69, 0, 0.25),
+        1px -2px 64px rgba(255, 69, 0, 0.2),
+        -1px 2px 72px rgba(255, 69, 0, 0.15),
+        0px 3px 80px rgba(255, 69, 0, 0.1);
+    letter-spacing: 1px;
+}
+ 
+ .template-ice {
+    font-weight: 900;
+    /* 사용자 색상이 우선 적용되도록 기본값만 설정 */
+    text-shadow: 
+        /* 한기가 서려있는 뒷 레이어 (파스텔 하늘색) */
+        2px 2px 48px rgba(135, 206, 235, 0.4),
+        -2px 1px 56px rgba(135, 206, 235, 0.35),
+        1px -2px 64px rgba(135, 206, 235, 0.3),
+        -1px 2px 72px rgba(135, 206, 235, 0.25),
+        0px 3px 80px rgba(135, 206, 235, 0.2),
+        3px -1px 88px rgba(135, 206, 235, 0.15),
+        -3px 2px 96px rgba(135, 206, 235, 0.1);
+    letter-spacing: 1px;
+}
+ 
+ .template-neon-purple {
+    font-weight: 900;
+    /* 사용자 색상이 우선 적용되도록 기본값만 설정 */
+    text-shadow: 
+        /* 보라빛 네온 뒷 레이어 */
+        0 0 32px rgba(147, 0, 211, 0.4),
+        0 0 40px rgba(147, 0, 211, 0.3),
+        0 0 48px rgba(147, 0, 211, 0.2);
+    letter-spacing: 1px;
+    /* 전체 텍스트에 글로우 효과 */
+    filter: drop-shadow(0 0 8px rgba(147, 0, 211, 0.3));
+}
+
+.template-neon-blue {
+    font-weight: 900;
+    /* 사용자 색상이 우선 적용되도록 기본값만 설정 */
+    text-shadow: 
+        /* 파란빛 네온 뒷 레이어 */
+        0 0 32px rgba(0, 191, 255, 0.4),
+        0 0 40px rgba(0, 191, 255, 0.3),
+        0 0 48px rgba(0, 191, 255, 0.2);
+    letter-spacing: 1px;
+    /* 전체 텍스트에 글로우 효과 */
+    filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.3));
+}
+
+.template-neon-green {
+    font-weight: 900;
+    /* 사용자 색상이 우선 적용되도록 기본값만 설정 */
+    text-shadow: 
+        /* 초록빛 네온 뒷 레이어 */
+        0 0 32px rgba(0, 255, 127, 0.4),
+        0 0 40px rgba(0, 255, 127, 0.3),
+        0 0 48px rgba(0, 255, 127, 0.2);
+    letter-spacing: 1px;
+    /* 전체 텍스트에 글로우 효과 */
+    filter: drop-shadow(0 0 8px rgba(0, 255, 127, 0.3));
+}
+
+.template-3d-layered {
+    font-weight: 900;
+    /* 3D 레이어드 효과 기본 스타일 */
+    text-shadow: 
+        /* 1단계: 가장 가까운 레이어 (라이트 핑크) */
+        2px 2px 0px rgba(255, 182, 193, 0.8),
+        /* 2단계: 핑크-오렌지 레이어 */
+        4px 4px 0px rgba(255, 105, 180, 0.8),
+        /* 3단계: 딥 바이올렛 레이어 */
+        6px 6px 0px rgba(147, 0, 211, 0.8),
+        /* 4단계: 퍼플 아웃라인 */
+        8px 8px 0px rgba(128, 0, 128, 0.8),
+        /* 5단계: 베이스 레이어 (딥 바이올렛) */
+        10px 10px 0px rgba(147, 0, 211, 0.6);
+    letter-spacing: 1px;
+}
+
+
+
+/* 템플릿 미리보기 예시별 스타일 */
+.template-example[data-template="impact"] .example-preview {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.template-example[data-template="fire"] .example-preview {
+    background: linear-gradient(135deg, #ff7675, #d63031);
+    color: #ff4500;
+    text-shadow: 
+        0 0 8px #ff4500, 
+        0 0 16px #ff4500,
+        2px 2px 24px rgba(255, 69, 0, 0.5),
+        -2px 1px 32px rgba(255, 69, 0, 0.4),
+        1px -2px 40px rgba(255, 100, 0, 0.3);
+}
+
+.template-example[data-template="ice"] .example-preview {
+    background: linear-gradient(135deg, #E6F3FF, #87CEEB);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(135, 206, 235, 0.6), 0 0 16px rgba(135, 206, 235, 0.4);
+}
+
+.template-example[data-template="neon-purple"] .example-preview {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    color: #ff00ff;
+    text-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
+}
+
+.template-example[data-template="neon-blue"] .example-preview {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: #00bfff;
+    text-shadow: 0 0 8px #00bfff, 0 0 16px #00bfff;
+}
+
+.template-example[data-template="neon-green"] .example-preview {
+    background: linear-gradient(135deg, #55a3ff, #00b894);
+    color: #00ff7f;
+    text-shadow: 0 0 8px #00ff7f, 0 0 16px #00ff7f;
+}
+
+.template-example[data-template="3d-layered"] .example-preview {
+    background: linear-gradient(135deg, #FFE4E1, #DDA0DD);
+    color: #FFB6C1;
+    text-shadow: 2px 2px 0px rgba(255, 182, 193, 0.8), 4px 4px 0px rgba(255, 105, 180, 0.8);
+}
+
+.template-example[data-template="royal-metallic"] .example-preview {
+    background: linear-gradient(135deg, #2C2C2C, #4A4A4A, #2C2C2C);
+    color: #FFD700;
+    text-shadow: 
+        2px 2px 3px rgba(0,0,0,0.6),
+        4px 4px 6px rgba(0,0,0,0.4),
+        -1px -1px 2px rgba(255,255,255,0.7),
+        0 0 6px rgba(255,215,0,0.5);
+    border: 2px solid #FFD700;
+}
+
+.template-example[data-template="holographic-3d"] .example-preview {
+    background: linear-gradient(135deg, #4B0082, #8A2BE2, #00CED1, #20B2AA);
+    color: #FFFFFF;
+    text-shadow: 
+        2px 2px 0px #87CEEB,    // 원본 하늘색
+        4px 4px 0px #FF0000,    // 진한 빨간색
+        6px 2px 0px #0000FF,    // 진한 파란색
+        2px 6px 0px #00FF00,    // 진한 초록색
+        8px 8px 0px #FFE135,    // 연한 노란색
+        3px 5px 0px #FF0000,    // 추가 빨간색
+        5px 3px 0px #0000FF,    // 추가 파란색
+        7px 1px 0px #00FF00,    // 추가 초록색
+        1px 7px 0px #FFE135;    // 추가 연한 노란색
+    border: 2px solid #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.template-example[data-template="blood-drip"] .example-preview {
+    background: linear-gradient(180deg, #4B0000, #8B0000, #DC143C, #B22222);
+    color: #8B0000;
+    text-shadow: 
+        /* 1단계: 아웃라인 강조 (가장 위에, 100% 불투명) */
+        0px 0px 0px rgba(0,0,0,1),
+        0px 0px 1px rgba(0,0,0,1),
+        0px 0px 2px rgba(0,0,0,1),
+        0px 0px 3px rgba(0,0,0,1),
+        0px 0px 4px rgba(0,0,0,1),
+        0px 0px 5px rgba(0,0,0,1),
+        /* 2단계: 메인 텍스트 (아웃라인 위에, 100% 불투명) */
+        0px 0px 0px rgba(139,0,0,1),
+        0px 0px 1px rgba(139,0,0,1),
+        0px 0px 2px rgba(139,0,0,1),
+        /* 3단계: 메인 그림자 (깊이감) */
+        2px 2px 4px rgba(139,0,0,0.9),
+        4px 4px 8px rgba(139,0,0,0.7),
+        /* 4단계: 피 떨어지는 효과 (깔끔하게 정리, 세로 방향만) */
+        0px 8px 12px rgba(139,0,0,0.8),
+        0px 16px 20px rgba(139,0,0,0.6),
+        0px 24px 28px rgba(139,0,0,0.4),
+        0px 32px 36px rgba(139,0,0,0.3),
+        0px 40px 44px rgba(139,0,0,0.2);
+    border: 2px solid #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+
+/* 템플릿 미리보기 예시 스타일 */
+.template-examples {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.template-examples h4 {
+    margin: 0 0 1rem 0;
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+ .template-grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 1.25rem;
+     padding: 1rem;
+     background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+     border-radius: 20px;
+     border: 1px solid #3a3a4e;
+     box-shadow: 
+         0 10px 30px rgba(0, 0, 0, 0.3),
+         inset 0 1px 0 rgba(255, 255, 255, 0.05);
+ }
+
+.template-example {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #2a2a4e 0%, #3a3a5e 50%, #2a2a4e 100%);
+    border: 1px solid #4a4a6e;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.template-example:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 8px 25px rgba(138, 43, 226, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: #8a2be2;
+    background: linear-gradient(135deg, #3a3a5e 0%, #4a4a6e 50%, #3a3a5e 100%);
+}
+
+.template-example.selected {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #4a4a6e 0%, #5a5a7e 50%, #4a4a6e 100%);
+    border-color: #8a2be2;
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(138, 43, 226, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.template-example.selected .example-preview {
+    border: 3px solid #8a2be2;
+    box-shadow: 
+        0 8px 25px rgba(138, 43, 226, 0.4),
+        0 4px 16px rgba(138, 43, 226, 0.2);
+}
+
+ .example-preview {
+     width: 100%;
+     height: 70px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 12px;
+     font-size: 1.1rem;
+     font-weight: 700;
+     margin-bottom: 0.75rem;
+     border: 2px solid rgba(138, 43, 226, 0.3);
+     box-shadow: 
+         0 4px 15px rgba(0, 0, 0, 0.2),
+         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+     position: relative;
+     overflow: hidden;
+     background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 100%);
+ }
+
+.template-example span {
+    font-size: 0.9rem;
+    color: #f8f9ff;
+    display: block;
+    line-height: 1.3;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 반응형 템플릿 그리드 */
+@media (max-width: 768px) {
+    .template-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+    
+    .template-example span {
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+    
+    .example-preview {
+        height: 60px;
+        font-size: 1rem;
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .editor-layout {
+        gap: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .settings-panel,
+    .preview-panel {
+        padding: 1.5rem;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .preview-container {
+        height: 300px;
+        overflow: auto;
+        white-space: nowrap;
+        min-width: 100%; /* 화면 너비에 맞춤 */
+        max-width: 100%; /* 화면 너비를 넘지 않도록 */
+        width: 100%; /* 전체 너비 사용 */
+    }
+    
+    /* 모바일에서도 텍스트 줄바꿈 방지 */
+    .text-preview {
+        white-space: nowrap;
+        min-width: max-content;
+        max-width: 100%; /* 화면 너비를 넘지 않도록 */
+        font-size: clamp(40px, 6vw, 80px); /* 모바일 최적화 폰트 크기 */
+        word-break: keep-all; /* 단어 단위로 줄바꿈 방지 */
+    }
+}
+
+/* 폰트 크기 표시 */
+#font-size-value {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+/* 윤곽선 설정 패널 */
+.outline-settings {
+    background: #3a3a4e;
+    border: 1px solid #4a4a5e;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.shadow-settings {
+    background: #3a3a4e;
+    border: 1px solid #4a4a5e;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* 윤곽선과 그림자 설정 값 표시 */
+#outline-width-value,
+#shadow-opacity-value,
+#shadow-blur-value,
+#shadow-offset-x-value,
+#shadow-offset-y-value {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+ /* 프리뷰 배경색 설정 */
+ .preview-background-setting {
+     margin-top: 1rem;
+     padding: 1rem;
+     background: #3a3a4e;
+     border-radius: 8px;
+     border: 1px solid #4a4a5e;
+     display: flex;
+     align-items: flex-start;
+     gap: 1.5rem;
+     flex-wrap: wrap;
+ }
+
+.preview-background-setting label {
+    display: block;
+    font-weight: 600;
+    color: #c0c0c0;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.color-picker-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.color-picker {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-picker:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 8px;
+}
+
+.color-picker::-webkit-color-swatch {
+    border: 2px solid #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.color-picker-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+ /* 폰트 크기 설정 */
+ .font-size-setting {
+     margin-left: auto;
+     min-width: 180px;
+     max-width: 200px;
+ }
+ 
+ /* 아웃라인 두께 설정 */
+ .outline-width-setting {
+     min-width: 180px;
+     max-width: 200px;
+ }
+ 
+ .outline-width-setting label {
+     display: block;
+     font-weight: 600;
+     color: #555;
+     margin-bottom: 0.5rem;
+     font-size: 0.9rem;
+ }
+ 
+ .outline-width-setting .form-range {
+     width: 100%;
+     margin: 0.5rem 0;
+ }
+
+.font-size-setting label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.font-size-setting .form-range {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+/* 모든 컬러피커 공통 스타일 */
+input[type="color"] {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+input[type="color"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+input[type="color"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 10px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 3px solid #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* 컬러피커가 있는 설정 그룹 스타일 */
+.setting-group:has(input[type="color"]) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.setting-group:has(input[type="color"]) label {
+    margin-bottom: 0;
+    min-width: 120px;
+}
