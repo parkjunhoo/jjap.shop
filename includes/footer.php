@@ -4,31 +4,14 @@
     <footer class="common-footer">
         <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>짭샵</h3>
-                    <p>크리에이터들을 위한 다양한 무료 도구 모음입니다.</p>
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80" target="_blank" class="social-link youtube">
-                            <img src="../assets/images/Youtube_logo.webp" alt="YouTube">
-                            <span>핵돌핀 Youtube</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>제공 도구</h3>
-                    <ul class="footer-links">
-                        <li><a href="/kakao-chat">카카오톡 대화 만들기</a></li>
-                        <li><a href="/thumbnail-text">썸네일 텍스트 편집기</a></li>
-                        <li><a href="/obs-browser-source">OBS 브라우저 소스</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>지원</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" onclick="showContact()">연락처</a></li>
-                    </ul>
+                <div class="footer-links-wrapper">
+                    <a href="#" onclick="showContact()">연락처</a>
+                    <a href="/terms">이용약관</a>
+                    <a href="/privacy">개인정보처리방침</a>
+                    <a href="https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80" target="_blank">
+                        <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/Youtube_logo.webp' : '../assets/images/Youtube_logo.webp'; ?>" alt="YouTube" class="footer-icon">
+                        핵돌핀 Youtube
+                    </a>
                 </div>
             </div>
             

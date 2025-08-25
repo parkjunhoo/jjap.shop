@@ -37,46 +37,7 @@ class MobileNavigation {
     }
     
     init() {
-        this.createMobileMenu();
         this.bindEvents();
-    }
-    
-    createMobileMenu() {
-        const header = document.querySelector('.common-header');
-        if (!header) return;
-        
-        // 현재 페이지 경로에 따라 링크 경로 결정
-        const isMainPage = window.location.pathname === '/' || window.location.pathname === '/index.php';
-        const homePath = isMainPage ? '/' : '/';
-        const kakaoPath = isMainPage ? '/kakao-chat' : '/kakao-chat';
-        const thumbnailPath = isMainPage ? '/thumbnail-text' : '/thumbnail-text';
-        
-        const mobileMenuBtn = document.createElement('button');
-        mobileMenuBtn.className = 'mobile-menu-btn';
-        mobileMenuBtn.innerHTML = `
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        `;
-        
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'mobile-menu';
-        mobileMenu.innerHTML = `
-            <div class="mobile-menu-content">
-                <div class="mobile-menu-header">
-                    <h3>메뉴</h3>
-                    <button class="mobile-menu-close">&times;</button>
-                </div>
-                <ul class="mobile-nav-list">
-                    <li><a href="${homePath}">홈</a></li>
-                    <li><a href="${kakaoPath}">카카오톡 대화</a></li>
-                    <li><a href="${thumbnailPath}">썸네일 텍스트 편집기</a></li>
-                </ul>
-            </div>
-        `;
-        
-        header.appendChild(mobileMenuBtn);
-        document.body.appendChild(mobileMenu);
     }
     
     bindEvents() {

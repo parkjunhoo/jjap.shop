@@ -58,7 +58,7 @@ function copyPopupUrl(buttonElement) {
         }, 2000);
     }).catch(function(err) {
         // 복사 실패 시 알림
-        alert('주소 복사에 실패했습니다. 수동으로 복사해주세요.');
+        Swal.fire({icon:'error',title:'복사 실패',text:'주소 복사에 실패했습니다. 수동으로 복사해주세요.'});
         console.error('복사 실패:', err);
     });
 }

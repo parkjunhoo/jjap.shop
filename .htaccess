@@ -1,53 +1,59 @@
 RewriteEngine On
 
+# 커뮤니티 관련 URL 리라이팅
+RewriteRule ^community/?$ pages/community.php [L]
+RewriteRule ^community/([^/]+)/?$ pages/view-post.php?id=$1 [L,QSA]
+RewriteRule ^write-post/?$ pages/write-post.php [L]
+RewriteRule ^job-board/?$ pages/job-board.php [L]
+RewriteRule ^job-board/([0-9]+)/?$ pages/job-view.php?id=$1 [L,QSA]
+RewriteRule ^write-job/?$ pages/write-job.php [L,QSA]
+
+# 정책 페이지
+RewriteRule ^terms/?$ pages/terms.php [L]
+RewriteRule ^privacy/?$ pages/privacy.php [L]
+
+# API 리라이팅 (명시적 처리)
+RewriteRule ^api/community/?$ api/community.php [L,QSA]
+RewriteRule ^api/job-board/?$ api/job-board.php [L,QSA]
+
+# 기존 도구들 URL 리라이팅
+RewriteRule ^kakao-chat/?$ pages/kakao-chat.php [L]
+RewriteRule ^thumbnail-text/?$ pages/thumbnail-text.php [L]
+RewriteRule ^obs-browser-source/?$ pages/obs-browser-source.php [L]
+
 # www 없이 접근 시 www 추가 (선택사항)
 # RewriteCond %{HTTP_HOST} !^www\. [NC]
 # RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
-# 메인 페이지 (jjap.shop -> index.php)
-RewriteRule ^$ index.php [L]
+# HTTPS 리다이렉트 (선택사항)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 카카오톡 대화 만들기 페이지 (jjap.shop/kakao-chat -> pages/kakao-chat.php)
-RewriteRule ^kakao-chat/?$ pages/kakao-chat.php [L]
-
-# 썸네일 텍스트 편집기 페이지 (jjap.shop/thumbnail-text -> pages/thumbnail-text.php)
-RewriteRule ^thumbnail-text/?$ pages/thumbnail-text.php [L]
-
-# OBS 브라우저 소스 페이지 (jjap.shop/obs-browser-source -> pages/obs-browser-source.php)
-RewriteRule ^obs-browser-source/?$ pages/obs-browser-source.php [L]
-RewriteRule ^obs-popup/(.*)$ obs-popup/$1 [L]
-
-# .php 확장자 제거 (기존 .php 파일들)
+# 파일 확장자 숨기기
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} ^/([^/]+)$
-RewriteCond %{DOCUMENT_ROOT}/$1.php -f
-RewriteRule ^([^/]+)$ $1.php [L]
-
-# 기존 파일들에 대한 직접 접근 허용
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^.*$ - [L]
-
-# 404 에러 페이지 (선택사항)
-# ErrorDocument 404 /404.html
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 # 보안 설정
-<Files "*.php">
-    # PHP 파일 직접 접근 제한 (필요시)
-    # Order Deny,Allow
-    # Deny from all
+<Files ".htaccess">
+    Order allow,deny
+    Deny from all
 </Files>
 
-# 이미지 파일 캐싱
+# 브라우저 캐싱 설정
 <IfModule mod_expires.c>
     ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
     ExpiresByType image/jpg "access plus 1 month"
     ExpiresByType image/jpeg "access plus 1 month"
     ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
 </IfModule>
+
+# favicon 요청 처리 (로고로 리다이렉트)
+RedirectMatch 302 ^/favicon\.ico$ /assets/images/jjapshoplogo.webp
 
 # Gzip 압축
 <IfModule mod_deflate.c>
