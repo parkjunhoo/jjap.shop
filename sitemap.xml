@@ -7,71 +7,191 @@
     <!-- 메인 페이지 -->
     <url>
         <loc>https://jjap.shop/</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
-    <!-- 크리에이터 도구 페이지들 -->
+    <!-- 크리에이터 섹션 -->
     <url>
-        <loc>https://jjap.shop/kakao-chat</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://jjap.shop/creator</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://jjap.shop/thumbnail-text</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://jjap.shop/creator/kakao-chat</loc>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://jjap.shop/obs-browser-source</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://jjap.shop/creator/thumbnail-text</loc>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
-    
-    <!-- 커뮤니티 관련 페이지들 -->
     <url>
-        <loc>https://jjap.shop/community</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://jjap.shop/creator/obs-browser-source</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/creator/obs-popup</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/creator/community</loc>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://jjap.shop/write-post</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <!-- 구인구직 관련 페이지들 -->
-    <url>
-        <loc>https://jjap.shop/job-board</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://jjap.shop/creator/job-board</loc>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://jjap.shop/write-job</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://jjap.shop/creator/write-post</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/creator/write-job</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- 유틸리티 도구 섹션 -->
+    <url>
+        <loc>https://jjap.shop/tools</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/tools/daily-scheduler</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/tools/pomodoro-timer</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/tools/random-advice</loc>
+        <lastmod>2025-09-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
-    
-    <!-- 정책 및 정보 페이지들 -->
     <url>
-        <loc>https://jjap.shop/terms</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
+        <loc>https://jjap.shop/tools/daily-fortune</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://jjap.shop/privacy</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
+        <loc>https://jjap.shop/tools/food-picker</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/tools/lotto-generator</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
     </url>
     
+    <!-- 심리테스트 섹션 -->
+    <url>
+        <loc>https://jjap.shop/test</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/test/name-compatibility</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/test/salary-lupang</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 무서운이야기 섹션 -->
+    <url>
+        <loc>https://jjap.shop/horror</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/horror/category/urban-legends</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/horror/category/real-stories</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/horror/category/scary-stories</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/horror/category/translated-horror</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/horror/write</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <!-- 게임임 섹션 -->
+    <url>
+        <loc>https://jjap.shop/game</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/game/valorant</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/game/valorant/board</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://jjap.shop/game/valorant/write</loc>
+        <lastmod>2025-09-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>

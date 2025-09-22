@@ -1,6 +1,21 @@
 class JobViewPage {
   constructor(){ this.id = this.extractId(); this.init(); }
-  extractId(){ const m = location.pathname.match(/\/job-board\/(\d+)/); return m?parseInt(m[1],10):null; }
+  extractId(){ 
+    // URL이 리다이렉트된 경우를 고려한 ID 추출
+    // 1. 기존 /job-board/123 형태
+    let m = location.pathname.match(/\/job-board\/(\d+)/);
+    if (m) return parseInt(m[1], 10);
+    
+    // 2. 리다이렉트된 /creator/job-view?id=123 형태
+    m = location.pathname.match(/\/creator\/job-view/);
+    if (m) {
+      const urlParams = new URLSearchParams(location.search);
+      const id = urlParams.get('id');
+      return id ? parseInt(id, 10) : null;
+    }
+    
+    return null;
+  }
   async init(){ if(!this.id) return this.render('잘못된 주소입니다.'); await this.load(); }
   async load(){
     try{
@@ -133,7 +148,7 @@ class JobViewPage {
     if(share){ share.addEventListener('click', ()=> this.copyLink()); }
     if(edit){ edit.addEventListener('click', ()=>{
       // 비밀번호 검증은 write 페이지에서 처리
-      window.location.href = `/write-job?id=${this.id}`;
+      window.location.href = `/creator/write-job?id=${this.id}`;
     }); }
     if(del){ del.addEventListener('click', async()=>{
       const { value: pw } = await Swal.fire({title:'비밀번호를 입력해주세요',input:'password',inputPlaceholder:'비밀번호',showCancelButton:true,confirmButtonText:'확인',cancelButtonText:'취소'});
@@ -142,7 +157,7 @@ class JobViewPage {
       const json = await res.json().catch(()=>({}));
       if(!res.ok || (json.status&&json.status>=400)){ Swal.fire({icon:'error',title:json.message||'삭제 실패'}); return; }
       await Swal.fire({icon:'success',title:'삭제되었습니다.',timer:1000,showConfirmButton:false});
-      location.href='/job-board';
+      location.href='/creator/job-board';
     }); }
     // 연락처 클릭 복사
     document.querySelectorAll('.contact-item').forEach(el => {

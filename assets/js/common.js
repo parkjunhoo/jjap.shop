@@ -220,7 +220,7 @@ window.showContact = function() {
         icon: 'info',
         title: '연락처',
         html: `
-            <p>핵돌핀 유튜브 채널을 통해 연락해주세요.</p>
+            <p>아래 이메일로 연락해주세요.</p>
             <p><strong>이메일:</strong> sssultalk@gmail.com</p>
         `,
         confirmButtonText: '확인',

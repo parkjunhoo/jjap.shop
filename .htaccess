@@ -1,25 +1,38 @@
 RewriteEngine On
 
-# 커뮤니티 관련 URL 리라이팅
-RewriteRule ^community/?$ pages/community.php [L]
-RewriteRule ^community/([^/]+)/?$ pages/view-post.php?id=$1 [L,QSA]
-RewriteRule ^write-post/?$ pages/write-post.php [L]
-RewriteRule ^job-board/?$ pages/job-board.php [L]
-RewriteRule ^job-board/([0-9]+)/?$ pages/job-view.php?id=$1 [L,QSA]
-RewriteRule ^write-job/?$ pages/write-job.php [L,QSA]
-
-# 정책 페이지
-RewriteRule ^terms/?$ pages/terms.php [L]
-RewriteRule ^privacy/?$ pages/privacy.php [L]
-
-# API 리라이팅 (명시적 처리)
+# API 리라이팅을 최우선으로 처리 (다른 리다이렉트보다 먼저)
 RewriteRule ^api/community/?$ api/community.php [L,QSA]
 RewriteRule ^api/job-board/?$ api/job-board.php [L,QSA]
 
-# 기존 도구들 URL 리라이팅
-RewriteRule ^kakao-chat/?$ pages/kakao-chat.php [L]
-RewriteRule ^thumbnail-text/?$ pages/thumbnail-text.php [L]
-RewriteRule ^obs-browser-source/?$ pages/obs-browser-source.php [L]
+# 구버전 URL을 새로운 creator 경로로 301 리다이렉트
+RewriteRule ^community/?$ /creator/community [R=301,L]
+RewriteRule ^community/([0-9]+)/?$ /creator/view-post?id=$1 [R=301,L,QSA]
+RewriteRule ^write-post/?$ /creator/write-post [R=301,L]
+RewriteRule ^job-board/?$ /creator/job-board [R=301,L]
+RewriteRule ^job-board/([0-9]+)/?$ /creator/job-view?id=$1 [R=301,L,QSA]
+RewriteRule ^write-job/?$ /creator/write-job [R=301,L,QSA]
+
+# 정책 페이지를 creator 경로로 301 리다이렉트
+RewriteRule ^terms/?$ /creator/terms [R=301,L]
+RewriteRule ^privacy/?$ /creator/privacy [R=301,L]
+
+# 기존 도구들을 creator 경로로 301 리다이렉트
+RewriteRule ^kakao-chat/?$ /creator/kakao-chat [R=301,L]
+RewriteRule ^thumbnail-text/?$ /creator/thumbnail-text [R=301,L]
+RewriteRule ^obs-browser-source/?$ /creator/obs-browser-source [R=301,L]
+
+# 호러 섹션 URL 라우팅
+RewriteRule ^horror/?$ /horror/index.php [L]
+RewriteRule ^horror/category/([a-zA-Z0-9-]+)/?$ /horror/category.php?category=$1 [L,QSA]
+RewriteRule ^horror/write/?$ /horror/write.php [L]
+RewriteRule ^horror/post/([0-9]+)/?$ /horror/post.php?id=$1 [L,QSA]
+
+# 게임 섹션 URL 라우팅
+RewriteRule ^game/?$ /game/index.php [L]
+RewriteRule ^game/valorant/?$ /game/valorant/index.php [L]
+RewriteRule ^game/valorant/board/?$ /game/valorant/board.php [L]
+RewriteRule ^game/valorant/write/?$ /game/valorant/write.php [L]
+RewriteRule ^game/valorant/post/([0-9]+)/?$ /game/valorant/post.php?id=$1 [L,QSA]
 
 # www 없이 접근 시 www 추가 (선택사항)
 # RewriteCond %{HTTP_HOST} !^www\. [NC]

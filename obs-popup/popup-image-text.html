@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지+텍스트 - OBS 브라우저 소스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .content-container {
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+
+        .instructions {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container" id="contentContainer">
+        <img class="image" id="image" src="https://jjap.shop/assets/images/obs.webp" alt="이미지">
+        <div class="text" id="text">방송 준비중~</div>
+        <div class="instructions">
+            💡 OBS에서 마우스 클릭 활성화를 켜면 직접 클릭할 수 있어요!
+        </div>
+    </div>
+
+    <script>
+        // URL 파라미터에서 설정값 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageUrl = urlParams.get('image') || 'https://jjap.shop/assets/images/obs.webp';
+        const text = urlParams.get('text') || '방송 준비중~';
+        const size = urlParams.get('size') || '24';
+        const color = urlParams.get('color') || '#ffffff';
+        const fontFamily = urlParams.get('fontFamily') || 'Arial, sans-serif';
+        const fontWeight = urlParams.get('fontWeight') || 'bold';
+        const textAlign = urlParams.get('textAlign') || 'center';
+        const shadowColor = urlParams.get('shadowColor') || '#000000';
+        const shadowBlur = urlParams.get('shadowBlur') || '2';
+
+        // 이미지와 텍스트 설정
+        const imageElement = document.getElementById('image');
+        const textElement = document.getElementById('text');
+        
+        imageElement.src = imageUrl;
+        textElement.textContent = text;
+        textElement.style.fontSize = size + 'px';
+        textElement.style.color = color;
+        textElement.style.fontFamily = fontFamily;
+        textElement.style.fontWeight = fontWeight;
+        textElement.style.textAlign = textAlign;
+        textElement.style.textShadow = `2px 2px ${shadowBlur}px ${shadowColor}`;
+    </script>
+</body>
+</html>

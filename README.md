@@ -110,7 +110,7 @@ php -S localhost:8000
 
 ## 👨‍💻 개발자
 
-- **핵돌핀** - [YouTube 채널](https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80)
+- **짭샵 팀**
 
 ## 🤝 기여하기
 
@@ -119,7 +119,6 @@ php -S localhost:8000
 ## 📞 문의
 
 - **이메일**: 문의사항이나 제안사항이 있으시면 연락주세요
-- **유튜브**: [핵돌핀 유튜브](https://www.youtube.com/@%ED%95%B5%EB%8F%8C%ED%95%80)
 
 ---
 

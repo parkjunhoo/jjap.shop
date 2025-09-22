@@ -1,0 +1,661 @@
+/* 🎨 색상 팔레트 생성기 CSS */
+
+.palette-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.palette-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.palette-header h1 {
+    font-size: 2.5rem;
+    color: #9C27B0;
+    margin-bottom: 10px;
+}
+
+.palette-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.palette-main {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* 왼쪽: 컨트롤 섹션 */
+.palette-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.generation-section, .presets-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.generation-section h3, .presets-section h3 {
+    color: #9C27B0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.generation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.option-group label {
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.option-group select {
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.option-group select:focus {
+    outline: none;
+    border-color: #9C27B0;
+}
+
+.base-color-section {
+    margin-bottom: 20px;
+}
+
+.base-color-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.color-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.color-input-group input[type="color"] {
+    width: 50px;
+    height: 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+}
+
+.color-input-group input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.color-input-group input[type="text"]:focus {
+    outline: none;
+    border-color: #9C27B0;
+}
+
+.btn-randomize {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-randomize:hover {
+    border-color: #9C27B0;
+    background: #f3e5f5;
+}
+
+.generate-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);
+}
+
+.generate-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+/* 프리셋 그리드 */
+.preset-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.preset-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.preset-btn:hover {
+    border-color: #9C27B0;
+    transform: translateY(-2px);
+}
+
+.preset-colors {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.preset-colors div {
+    flex: 1;
+}
+
+.preset-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* 오른쪽: 팔레트 표시 */
+.palette-display {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.current-palette {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: 300px;
+}
+
+.palette-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    text-align: center;
+    color: #888;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.palette-welcome h3 {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.palette-colors {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.palette-color {
+    flex: 1;
+    height: 120px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.palette-color:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.color-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px;
+    font-size: 0.8rem;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.palette-color:hover .color-info {
+    transform: translateY(0);
+}
+
+.copy-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.copy-indicator.show {
+    opacity: 1;
+}
+
+.palette-info {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-header h4 {
+    color: #9C27B0;
+    margin: 0;
+}
+
+.palette-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    border-color: #9C27B0;
+    background: #f3e5f5;
+}
+
+.color-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.color-detail-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.color-detail-card:hover {
+    transform: translateY(-3px);
+}
+
+.color-preview {
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.color-values {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+}
+
+.color-value {
+    padding: 4px 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.color-value:hover {
+    background: #e0e0e0;
+}
+
+/* 하단: 기능들 */
+.palette-features {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+}
+
+.saved-palettes-section, .tools-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3, .tools-section h3 {
+    color: #9C27B0;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.btn-clear {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+    background: #d32f2f;
+}
+
+.saved-palettes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.empty-saved {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.saved-palette-item {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.saved-palette-item:hover {
+    transform: translateY(-2px);
+}
+
+.saved-palette-preview {
+    display: flex;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.saved-palette-preview div {
+    flex: 1;
+}
+
+.saved-palette-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-palette-name {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.saved-palette-date {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tool-card:hover {
+    border-color: #9C27B0;
+    transform: translateY(-3px);
+}
+
+.tool-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.tool-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.tool-desc {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    max-width: 600px;
+    max-height: 80vh;
+    margin: 5% auto;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.modal-header h3 {
+    color: #9C27B0;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .palette-main {
+        grid-template-columns: 320px 1fr;
+    }
+    
+    .palette-features {
+        grid-template-columns: 1fr 350px;
+    }
+}
+
+@media (max-width: 968px) {
+    .palette-main {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .palette-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .preset-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .palette-container {
+        padding: 15px;
+    }
+    
+    .palette-header h1 {
+        font-size: 2rem;
+    }
+    
+    .palette-colors {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .palette-color {
+        height: 60px;
+    }
+    
+    .color-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preset-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .generation-options {
+        gap: 12px;
+    }
+    
+    .color-input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .color-input-group input[type="color"] {
+        width: 100%;
+    }
+    
+    .palette-actions {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .color-details {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사다리타기 - OBS 브라우저 소스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .ladder-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .ladder-game {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin: 20px 0;
+            min-width: 400px;
+        }
+
+        .ladder-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .ladder-player, .ladder-result {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px 0;
+            text-align: center;
+            min-width: 80px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .ladder-player {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            color: #1976d2;
+        }
+
+        .ladder-result {
+            background: #f3e5f5;
+            border-color: #9C27B0;
+            color: #7b1fa2;
+        }
+
+        .ladder-lines {
+            position: relative;
+            height: 150px;
+            width: 120px;
+            margin: 0 20px;
+        }
+
+        .ladder-line {
+            position: absolute;
+            background: #333;
+            height: 2px;
+            transform-origin: left center;
+        }
+
+        .ladder-ball {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #ff4444;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .draggable {
+            position: absolute;
+            cursor: move;
+        }
+
+        .start-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .start-button:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .start-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="ladder-container draggable" id="ladder-container">
+        <h3>🎯 사다리타기</h3>
+        <div class="ladder-game" id="ladder-game">
+            <!-- 사다리 게임이 여기에 생성됩니다 -->
+        </div>
+        <div class="result-display" id="result-display" style="display: none;">
+            결과가 여기에 표시됩니다
+        </div>
+        <button class="start-button" id="start-button" onclick="startLadder()">🎲 사다리 시작</button>
+    </div>
+
+    <script>
+        // URL 파라미터에서 설정값 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const participants = urlParams.get('participants') ? urlParams.get('participants').split(',') : ['참가자1', '참가자2', '참가자3', '참가자4'];
+        const results = urlParams.get('results') ? urlParams.get('results').split(',') : ['결과1', '결과2', '결과3', '결과4'];
+        const lines = parseInt(urlParams.get('lines')) || 4;
+        const color = urlParams.get('color') || '#333333';
+
+        // 사다리 게임 생성
+        function generateLadder() {
+            const gameContainer = document.getElementById('ladder-game');
+            gameContainer.innerHTML = '';
+
+            // 참가자 열
+            const participantsColumn = document.createElement('div');
+            participantsColumn.className = 'ladder-column';
+            participants.forEach(participant => {
+                const div = document.createElement('div');
+                div.className = 'ladder-player';
+                div.textContent = participant;
+                participantsColumn.appendChild(div);
+            });
+            gameContainer.appendChild(participantsColumn);
+
+            // 사다리 선
+            const linesContainer = document.createElement('div');
+            linesContainer.className = 'ladder-lines';
+            
+            for (let i = 0; i < lines; i++) {
+                const line = document.createElement('div');
+                line.className = 'ladder-line';
+                const y = 20 + (i * 30);
+                const length = 80 + Math.random() * 40;
+                const angle = Math.random() * 30 - 15;
+                line.style.cssText = `
+                    top: ${y}px;
+                    left: 50%;
+                    width: ${length}px;
+                    background: ${color};
+                    transform: rotate(${angle}deg);
+                `;
+                linesContainer.appendChild(line);
+            }
+            gameContainer.appendChild(linesContainer);
+
+            // 결과 열
+            const resultsColumn = document.createElement('div');
+            resultsColumn.className = 'ladder-column';
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.className = 'ladder-result';
+                div.textContent = result;
+                resultsColumn.appendChild(div);
+            });
+            gameContainer.appendChild(resultsColumn);
+        }
+
+        // 사다리 시작
+        function startLadder() {
+            const startButton = document.getElementById('start-button');
+            const resultDisplay = document.getElementById('result-display');
+            
+            startButton.disabled = true;
+            startButton.textContent = '🎲 굴리는 중...';
+            
+            // 랜덤하게 참가자 선택
+            const randomIndex = Math.floor(Math.random() * participants.length);
+            const selectedParticipant = participants[randomIndex];
+            
+            // 결과 결정 (간단한 랜덤 로직)
+            const resultIndex = Math.floor(Math.random() * results.length);
+            const selectedResult = results[resultIndex];
+            
+            // 2초 후 결과 표시
+            setTimeout(() => {
+                resultDisplay.style.display = 'block';
+                resultDisplay.innerHTML = `
+                    <h4>🎯 사다리 결과</h4>
+                    <p><strong>${selectedParticipant}</strong> → <strong>${selectedResult}</strong></p>
+                `;
+                
+                startButton.disabled = false;
+                startButton.textContent = '🎲 다시 시작';
+            }, 2000);
+        }
+
+        // 드래그 앤 드롭 기능
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+
+        document.getElementById('ladder-container').addEventListener('mousedown', function(e) {
+            if (e.target.tagName === 'BUTTON') return; // 버튼 클릭 시는 드래그 방지
+            isDragging = true;
+            const rect = this.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            this.style.zIndex = '1000';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                const container = document.getElementById('ladder-container');
+                const x = e.clientX - dragOffset.x;
+                const y = e.clientY - dragOffset.y;
+                container.style.left = x + 'px';
+                container.style.top = y + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                document.getElementById('ladder-container').style.zIndex = 'auto';
+            }
+        });
+
+        // 초기 설정
+        generateLadder();
+        document.getElementById('ladder-container').style.left = '50px';
+        document.getElementById('ladder-container').style.top = '50px';
+    </script>
+</body>
+</html>

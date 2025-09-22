@@ -1,0 +1,29 @@
+/* 💎 시간 형식 컨트롤 - 고급 디자인 */
+.time-format-controls {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 30px;
+    align-items: flex-end;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(74,144,226,0.08) 0%, rgba(53,122,189,0.05) 100%);
+    border: 1px solid rgba(74,144,226,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(74,144,226,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.time-format-controls .control-group label {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .time-format-controls {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        padding: 20px;
+    }
+}

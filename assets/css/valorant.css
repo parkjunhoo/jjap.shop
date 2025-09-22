@@ -1,0 +1,726 @@
+/* 발로란트 섹션 전용 스타일 */
+
+/* 전역 설정 */
+.valorant-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Valorant Hero Section */
+.valorant-hero {
+    position: relative;
+    height: 20vh;  /* 기존 80vh의 25% */
+    min-height: 200px;  /* 기존 600px의 약 33% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff4655 0%, #0f1419 100%);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;
+}
+
+.hero-logo {
+    width: 150px;  /* 기존 600px의 25% */
+    height: 100px;  /* 기존 400px의 25% */
+    filter: brightness(0) invert(1);
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-size: 2.5rem;  /* 기존 5rem의 50% */
+    font-weight: 900;
+    margin-bottom: 0.5rem;  /* 간격 줄임 */
+    text-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, #ffffff, #ff4655);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;  /* 기존 2rem의 60% */
+    font-weight: 700;
+    margin-bottom: 0.8rem;  /* 간격 줄임 */
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    font-size: 0.9rem;  /* 기존 1.3rem의 약 70% */
+    line-height: 1.5;  /* 줄간격 좀 더 컴팩트하게 */
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;  /* 간격 줄임 */
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;  /* 기존 2rem에서 줄임 */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    padding: 0.8rem 2rem;  /* 기존 1.2rem 3rem에서 줄임 */
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;  /* 기존 1.2rem에서 줄임 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;  /* 기존 0.8rem에서 줄임 */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-btn.primary {
+    background: linear-gradient(135deg, #ff4655, #ff6b6b);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.hero-btn.primary:hover {
+    background: linear-gradient(135deg, #ff3344, #ff5555);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 70, 85, 0.4);
+}
+
+.hero-btn.secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.hero-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Agent Types Section */
+.agent-types-section {
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.agent-types-section .section-subtitle {
+    margin-bottom: 30px; /* 요원 역할별 가이드 서브타이틀에만 적용 */
+}
+
+.agent-types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 가로로 2개씩 배치 */
+    gap: 3rem;
+    max-width: 1000px; /* 최대 너비 조정 */
+    margin: 0 auto;
+}
+
+/* 모바일에서는 1개씩 */
+@media (max-width: 768px) {
+    .agent-types-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+}
+
+.agent-type-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.agent-type-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* 역할별 색상 */
+.agent-type-card.duelist {
+    border-color: rgba(255, 107, 107, 0.3);
+}
+.agent-type-card.duelist:hover {
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 25px 60px rgba(255, 107, 107, 0.2);
+}
+
+.agent-type-card.initiator {
+    border-color: rgba(78, 205, 196, 0.3);
+}
+.agent-type-card.initiator:hover {
+    border-color: rgba(78, 205, 196, 0.6);
+    box-shadow: 0 25px 60px rgba(78, 205, 196, 0.2);
+}
+
+.agent-type-card.sentinel {
+    border-color: rgba(69, 183, 209, 0.3);
+}
+.agent-type-card.sentinel:hover {
+    border-color: rgba(69, 183, 209, 0.6);
+    box-shadow: 0 25px 60px rgba(69, 183, 209, 0.2);
+}
+
+.agent-type-card.controller {
+    border-color: rgba(150, 206, 180, 0.3);
+}
+.agent-type-card.controller:hover {
+    border-color: rgba(150, 206, 180, 0.6);
+    box-shadow: 0 25px 60px rgba(150, 206, 180, 0.2);
+}
+
+.type-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.type-icon {
+    width: 60px;
+    height: 60px;
+    filter: brightness(0) invert(1);
+}
+
+.type-info {
+    flex: 1;
+}
+
+.type-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.type-name-en {
+    font-size: 1rem;
+    color: #ff4655;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.type-description {
+    font-size: 1rem;
+    color: #a8b2d1;
+    line-height: 1.5;
+}
+
+.agents-preview {
+    margin-bottom: 2rem;
+    min-height: 120px;
+    overflow: hidden;
+    position: relative;
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+}
+
+/* 모바일 슬라이더 스타일 */
+@media (max-width: 768px) {
+    .agents-preview {
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .agents-grid.mobile-slider {
+        display: flex;
+        gap: 1rem;
+        animation: agentSlideInfinite 30s linear infinite;
+        width: fit-content;
+        padding: 1rem;
+        will-change: transform;
+    }
+    
+    .agents-grid.mobile-slider:hover {
+        animation-play-state: paused;
+    }
+    
+    /* 무한 슬라이드 애니메이션 */
+    @keyframes agentSlideInfinite {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-33.33%);
+        }
+    }
+    
+    /* 각 요원 타입별로 다른 속도 */
+    .agent-type-card.duelist .agents-grid.mobile-slider {
+        animation-duration: 25s;
+    }
+    
+    .agent-type-card.initiator .agents-grid.mobile-slider {
+        animation-duration: 28s;
+    }
+    
+    .agent-type-card.sentinel .agents-grid.mobile-slider {
+        animation-duration: 32s;
+    }
+    
+    .agent-type-card.controller .agents-grid.mobile-slider {
+        animation-duration: 35s;
+    }
+}
+
+.agent-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.agent-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.agent-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.agent-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* 모바일 요원 아이템 개선 */
+@media (max-width: 768px) {
+    .mobile-slider .agent-item {
+        min-width: 80px;
+        background: rgba(255, 70, 85, 0.1);
+        border: 1px solid rgba(255, 70, 85, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-slider .agent-item:hover {
+        background: rgba(255, 70, 85, 0.2);
+        border-color: rgba(255, 70, 85, 0.4);
+        transform: translateY(-2px);
+    }
+    
+    .mobile-slider .agent-avatar {
+        width: 45px;
+        height: 45px;
+        border: 2px solid rgba(255, 70, 85, 0.3);
+        box-shadow: 0 4px 15px rgba(255, 70, 85, 0.2);
+    }
+    
+    .mobile-slider .agent-avatar:hover {
+        border-color: rgba(255, 70, 85, 0.6);
+        box-shadow: 0 6px 20px rgba(255, 70, 85, 0.3);
+    }
+    
+    .mobile-slider .agent-name {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .mobile-slider .agent-item:hover .agent-name {
+        color: #FF4655;
+    }
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a8b2d1;
+    font-size: 0.95rem;
+    padding: 2rem;
+}
+
+.type-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(255, 70, 85, 0.1);
+    border: 1px solid rgba(255, 70, 85, 0.3);
+    border-radius: 12px;
+    color: #ff6b6b;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.type-btn:hover {
+    background: rgba(255, 70, 85, 0.2);
+    border-color: rgba(255, 70, 85, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Latest Tips Section */
+.latest-tips-section {
+    padding: 6rem 2rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.tip-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 70, 85, 0.4);
+    box-shadow: 0 20px 50px rgba(255, 70, 85, 0.15);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tip-agent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.tip-meta {
+    flex: 1;
+}
+
+.tip-agent-name {
+    font-size: 0.9rem;
+    color: #ff4655;
+    font-weight: 600;
+}
+
+.tip-date {
+    font-size: 0.8rem;
+    color: #8892b0;
+}
+
+.tip-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+.tip-summary {
+    font-size: 0.95rem;
+    color: #a8b2d1;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.tip-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #8892b0;
+}
+
+.tip-stats-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.tip-agent-badge {
+    background: rgba(255, 70, 85, 0.1);
+    border: 1px solid rgba(255, 70, 85, 0.3);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+}
+
+.tip-agent {
+    color: #ff6b6b;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* 빈 팁 메시지 스타일 */
+.no-tips {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #a8b2d1;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 80vw;
+}
+
+.loading-tips {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #a8b2d1;
+    font-size: 1.1rem;
+    padding: 4rem;
+}
+
+.tips-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tips-more-btn,
+.tips-write-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tips-more-btn {
+    background: rgba(255, 70, 85, 0.1);
+    color: #ff6b6b;
+    border: 2px solid rgba(255, 70, 85, 0.3);
+}
+
+.tips-more-btn:hover {
+    background: rgba(255, 70, 85, 0.2);
+    border-color: rgba(255, 70, 85, 0.5);
+    transform: translateY(-3px);
+}
+
+.tips-write-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.tips-write-btn:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+/* Quick Actions Section */
+.quick-actions-section {
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.quick-action-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 70, 85, 0.4);
+    box-shadow: 0 20px 50px rgba(255, 70, 85, 0.15);
+}
+
+.action-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.action-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.action-description {
+    color: #a8b2d1;
+    line-height: 1.5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .valorant-hero {
+        height: 70vh;
+        min-height: 500px;
+    }
+    
+    .hero-logo {
+        width: 400px;
+        height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .agent-types-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .valorant-hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .hero-logo {
+        width: 300px;
+        height: 200px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .agent-types-section,
+    .latest-tips-section,
+    .quick-actions-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .tips-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tips-more-btn,
+    .tips-write-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .agent-type-card,
+    .tip-card,
+    .quick-action-card {
+        padding: 1.5rem;
+    }
+    
+    .type-header {
+        gap: 1rem;
+    }
+    
+    .type-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .type-name {
+        font-size: 1.5rem;
+    }
+}

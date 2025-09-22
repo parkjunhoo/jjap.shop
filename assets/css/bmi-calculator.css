@@ -1,0 +1,1030 @@
+/* ⚖️ BMI & 기초대사율 계산기 CSS */
+
+.bmi-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.bmi-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bmi-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.bmi-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.bmi-main {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* 왼쪽: 입력 섹션 */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.personal-info-card, .quick-check-card, .goal-setting-card {
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.personal-info-card h3, .quick-check-card h3, .goal-setting-card h3 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 개인정보 입력 */
+.info-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.info-input {
+    flex: 1;
+    padding: 12px 50px 12px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.info-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.unit {
+    position: absolute;
+    right: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+/* 성별 선택 */
+.gender-select {
+    display: flex;
+    gap: 8px;
+}
+
+.gender-btn {
+    flex: 1;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.gender-btn:hover {
+    border-color: #4CAF50;
+    background: #f1f8e9;
+}
+
+.gender-btn.active {
+    border-color: #4CAF50;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+}
+
+.gender-icon {
+    font-size: 1.3rem;
+}
+
+/* 활동 수준 선택 */
+.activity-select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.activity-select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* 계산 버튼 */
+.calculate-btn {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 빠른 체크 */
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.quick-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.quick-btn:hover {
+    border-color: #4CAF50;
+    background: #f1f8e9;
+    transform: translateY(-2px);
+}
+
+.quick-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-icon {
+    font-size: 1.3rem;
+    width: 30px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.quick-text strong {
+    display: block;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.quick-text small {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.quick-note {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    margin: 0;
+}
+
+/* 목표 설정 */
+.goal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.timeframe-select {
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+}
+
+.timeframe-select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.goal-btn {
+    background: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goal-btn:hover {
+    background: #F57C00;
+    transform: translateY(-2px);
+}
+
+/* 오른쪽: 결과 섹션 */
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.bmi-result {
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.1);
+}
+
+.result-header h3 {
+    color: #4CAF50;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.result-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    border-color: #4CAF50;
+    background: #f1f8e9;
+}
+
+/* BMI 디스플레이 */
+.bmi-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.bmi-gauge {
+    position: relative;
+    display: inline-block;
+}
+
+.gauge-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+#bmiGauge {
+    width: 100%;
+    height: 100%;
+}
+
+.bmi-value {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.bmi-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.bmi-status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+/* 건강 지표 */
+.health-metrics {
+    margin-bottom: 30px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(76, 175, 80, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+}
+
+.metric-card.primary {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    transform: scale(1.02);
+}
+
+.metric-card.primary:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.metric-icon {
+    font-size: 2rem;
+    width: 50px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.metric-card.primary .metric-icon {
+    color: white;
+}
+
+.metric-card:not(.primary) .metric-icon {
+    color: #4CAF50;
+}
+
+.metric-content {
+    flex: 1;
+}
+
+.metric-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.metric-card.primary .metric-value {
+    color: white;
+}
+
+.metric-card:not(.primary) .metric-value {
+    color: #4CAF50;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 상세 분석 */
+.detailed-analysis {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 15px rgba(76, 175, 80, 0.1);
+}
+
+.analysis-tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: #4CAF50;
+    border-bottom-color: #4CAF50;
+    background: #f1f8e9;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 종합분석 탭 */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.overview-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.overview-item h4 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.status-content, .range-content, .recommendations-content, .warnings-content {
+    color: #555;
+    line-height: 1.5;
+}
+
+.status-highlight {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.warning-text {
+    color: #FF9800;
+    font-weight: 500;
+}
+
+/* 영양관리 탭 */
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.nutrition-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.nutrition-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.nutrition-card h4 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.calorie-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calorie-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+}
+
+.macro-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#macroChart {
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.diet-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.diet-tip {
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #4CAF50;
+}
+
+/* 운동계획 탭 */
+.exercise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.exercise-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.exercise-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.exercise-card h4 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.exercise-item {
+    padding: 8px 12px;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workout-plan {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.workout-day {
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #4CAF50;
+}
+
+.exercise-effects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.effect-item {
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.effect-icon {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* 목표관리 탭 */
+.goal-analysis {
+    padding: 20px;
+    text-align: center;
+}
+
+.goal-message {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.goal-details {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.goal-progress {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    transition: width 0.5s ease;
+}
+
+/* 환영 카드 */
+.welcome-card {
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.welcome-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.welcome-card h3 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.welcome-card p {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.health-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.indicator-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 15px 10px;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+.indicator-icon {
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.indicator-item span:last-child {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+}
+
+/* 하단: 기능들 */
+.bmi-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.history-section, .tips-section {
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3, .tips-section h3 {
+    color: #4CAF50;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.btn-clear {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+    background: #d32f2f;
+}
+
+/* 건강 기록 */
+.health-history {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.history-item:hover {
+    transform: translateY(-2px);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.history-date {
+    font-weight: 600;
+    color: #333;
+}
+
+.history-delete {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.history-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.history-status {
+    text-align: center;
+    padding: 5px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.status-normal { background: #e8f5e8; color: #2e7d32; }
+.status-underweight { background: #e3f2fd; color: #1565c0; }
+.status-overweight { background: #fff3e0; color: #ef6c00; }
+.status-obese { background: #ffebee; color: #c62828; }
+
+/* 팁 가이드 */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.tip-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+    display: flex;
+    gap: 12px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.tip-card:hover {
+    transform: translateY(-3px);
+}
+
+.tip-card .tip-icon {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    flex-shrink: 0;
+}
+
+.tip-content h4 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.tip-content p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .bmi-main {
+        grid-template-columns: 380px 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 968px) {
+    .bmi-main {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .bmi-features {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .overview-grid, .nutrition-grid, .exercise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .health-indicators {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bmi-container {
+        padding: 15px;
+    }
+    
+    .bmi-header h1 {
+        font-size: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .analysis-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: none;
+        min-width: calc(50% - 5px);
+    }
+    
+    .gauge-container {
+        width: 250px;
+        height: 150px;
+    }
+    
+    .bmi-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+    }
+    
+    .history-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .gender-select {
+        flex-direction: column;
+    }
+}

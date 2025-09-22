@@ -1,0 +1,219 @@
+/* 모바일 드로어 메뉴 스타일 */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100vh;
+    background: #1a1a1a;
+    z-index: 9999;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-content {
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #2d3748;
+    border-bottom: 1px solid #4a5568;
+}
+
+.mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #a0aec0;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+    background: #4a5568;
+    color: #ffffff;
+}
+
+/* 모바일 섹션 네비게이션 */
+.mobile-section-nav {
+    padding: 20px;
+    border-bottom: 1px solid #4a5568;
+}
+
+.mobile-section-nav h4 {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobile-section-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.mobile-section-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    text-decoration: none;
+    color: #a0aec0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid #4a5568;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.mobile-section-link:hover {
+    border-color: #718096;
+    background: #2d3748;
+    color: #ffffff;
+}
+
+.mobile-section-link.active {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* 섹션별 모바일 링크 활성화 색상 */
+.creator-mobile-menu .mobile-section-link.active {
+    background: #FF6B6B;
+    border-color: #FF6B6B;
+}
+
+.tools-mobile-menu .mobile-section-link.active {
+    background: #4ECDC4;
+    border-color: #4ECDC4;
+}
+
+.test-mobile-menu .mobile-section-link.active {
+    background: #45B7D1;
+    border-color: #45B7D1;
+}
+
+.horror-mobile-menu .mobile-section-link.active {
+    background: #8B5A83;
+    border-color: #8B5A83;
+}
+
+/* 모바일 세부 메뉴 */
+.mobile-detail-nav {
+    flex: 1;
+    padding: 20px;
+}
+
+.mobile-detail-nav h4 {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 2px;
+}
+
+.mobile-nav-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.mobile-nav-list a:hover {
+    background: #2d3748;
+    color: #ffffff;
+}
+
+.mobile-nav-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* 모바일 메뉴 오버레이 */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 데스크톱에서는 모바일 메뉴 숨김 */
+@media (min-width: 641px) {
+    .mobile-menu,
+    .mobile-menu-overlay,
+    .mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+/* 매우 작은 모바일 화면에서 조정 */
+@media (max-width: 360px) {
+    .mobile-menu {
+        width: 90vw;
+    }
+    
+    .mobile-section-list {
+        grid-template-columns: 1fr;
+    }
+}

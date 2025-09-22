@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤숫자 생성기 - OBS 브라우저 소스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .random-container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-width: 300px;
+        }
+
+        .random-number {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .random-number.rolling {
+            animation: numberRoll 0.1s ease-in-out infinite;
+        }
+
+        @keyframes numberRoll {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .range-display {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .generate-button {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .generate-button:hover {
+            background: #138496;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+
+        .generate-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .history {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 8px 12px;
+            margin: 5px;
+            display: inline-block;
+            font-weight: bold;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .draggable {
+            position: absolute;
+            cursor: move;
+        }
+
+        .auto-mode {
+            margin: 15px 0;
+            padding: 10px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+        }
+
+        .auto-mode label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .auto-mode input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="random-container draggable" id="random-container">
+        <h3>🔢 랜덤숫자 생성기</h3>
+        
+        <div class="range-display" id="range-display">
+            범위: 1 ~ 100
+        </div>
+        
+        <div class="random-number" id="random-number">?</div>
+        
+        <button class="generate-button" id="generate-button" onclick="generateRandom()">
+            🎲 숫자 생성
+        </button>
+        
+        <div class="auto-mode">
+            <label>
+                <input type="checkbox" id="auto-mode" onchange="toggleAutoMode()">
+                자동 모드 (5초마다 생성)
+            </label>
+        </div>
+        
+        <div class="history" id="history">
+            <!-- 생성된 숫자 히스토리가 여기에 표시됩니다 -->
+        </div>
+    </div>
+
+    <script>
+        // URL 파라미터에서 설정값 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const min = parseInt(urlParams.get('min')) || 1;
+        const max = parseInt(urlParams.get('max')) || 100;
+        const size = parseInt(urlParams.get('size')) || 72;
+        const color = urlParams.get('color') || '#667eea';
+
+        // 전역 변수
+        let autoModeInterval = null;
+        let history = [];
+
+        // 범위 표시 업데이트
+        function updateRangeDisplay() {
+            document.getElementById('range-display').textContent = `범위: ${min} ~ ${max}`;
+        }
+
+        // 랜덤숫자 생성
+        function generateRandom() {
+            const randomElement = document.getElementById('random-number');
+            const generateButton = document.getElementById('generate-button');
+            
+            // 버튼 비활성화
+            generateButton.disabled = true;
+            generateButton.textContent = '🎲 생성 중...';
+            
+            // 굴리는 애니메이션 시작
+            randomElement.classList.add('rolling');
+            
+            // 1초 후 결과 표시
+            setTimeout(() => {
+                // 진정한 랜덤을 위한 추가 엔트로피
+                const timestamp = Date.now();
+                const randomSeed = Math.random() * timestamp;
+                const result = Math.floor(randomSeed % (max - min + 1)) + min;
+                
+                randomElement.textContent = result;
+                randomElement.classList.remove('rolling');
+                
+                // 히스토리에 추가
+                addToHistory(result);
+                
+                // 버튼 복원
+                generateButton.disabled = false;
+                generateButton.textContent = '🎲 숫자 생성';
+            }, 1000);
+        }
+
+        // 히스토리에 추가
+        function addToHistory(number) {
+            history.unshift(number);
+            
+            // 최대 10개까지만 표시
+            if (history.length > 10) {
+                history = history.slice(0, 10);
+            }
+            
+            updateHistoryDisplay();
+        }
+
+        // 히스토리 표시 업데이트
+        function updateHistoryDisplay() {
+            const historyContainer = document.getElementById('history');
+            historyContainer.innerHTML = '';
+            
+            history.forEach(number => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.textContent = number;
+                historyContainer.appendChild(item);
+            });
+        }
+
+        // 자동 모드 토글
+        function toggleAutoMode() {
+            const autoMode = document.getElementById('auto-mode');
+            
+            if (autoMode.checked) {
+                // 자동 모드 시작
+                generateRandom();
+                autoModeInterval = setInterval(generateRandom, 5000);
+            } else {
+                // 자동 모드 중지
+                if (autoModeInterval) {
+                    clearInterval(autoModeInterval);
+                    autoModeInterval = null;
+                }
+            }
+        }
+
+        // 드래그 앤 드롭 기능
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+
+        document.getElementById('random-container').addEventListener('mousedown', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            isDragging = true;
+            const rect = this.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            this.style.zIndex = '1000';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                const container = document.getElementById('random-container');
+                const x = e.clientX - dragOffset.x;
+                const y = e.clientY - dragOffset.y;
+                container.style.left = x + 'px';
+                container.style.top = y + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                document.getElementById('random-container').style.zIndex = 'auto';
+            }
+        });
+
+        // 초기 설정
+        updateRangeDisplay();
+        document.getElementById('random-number').style.fontSize = size + 'px';
+        document.getElementById('random-number').style.color = color;
+        document.getElementById('random-container').style.left = '50px';
+        document.getElementById('random-container').style.top = '50px';
+    </script>
+</body>
+</html>

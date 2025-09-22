@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 - OBS 브라우저 소스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .dice-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dice {
+            font-size: 8rem;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .dice.rolling {
+            animation: roll 0.5s infinite;
+        }
+
+        @keyframes roll {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .start-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .result {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #667eea;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="dice-container">
+        <div class="dice" id="dice">🎲</div>
+        <button class="start-btn" id="startBtn">🎲 주사위 굴리기</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        // URL 파라미터에서 설정값 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const sides = parseInt(urlParams.get('sides')) || 6;
+        const size = parseInt(urlParams.get('size')) || 100;
+
+        // 주사위 크기 설정
+        document.getElementById('dice').style.fontSize = (size * 0.4) + 'rem';
+
+        let isRolling = false;
+
+        document.getElementById('startBtn').addEventListener('click', function() {
+            if (isRolling) return;
+            
+            isRolling = true;
+            this.disabled = true;
+            this.textContent = '굴리는 중...';
+            
+            const dice = document.getElementById('dice');
+            const result = document.getElementById('result');
+            
+            // 결과 숨기기
+            result.textContent = '';
+            
+            // 굴리는 애니메이션 시작
+            dice.classList.add('rolling');
+            
+            // 2초 후 결과 표시
+            setTimeout(() => {
+                dice.classList.remove('rolling');
+                
+                // 랜덤 결과 생성
+                const randomResult = Math.floor(Math.random() * sides) + 1;
+                result.textContent = randomResult;
+                
+                // 버튼 재활성화
+                isRolling = false;
+                this.disabled = false;
+                this.textContent = '🎲 주사위 굴리기';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -11,9 +11,20 @@ class ViewPostPage {
     }
 
     extractPostIdFromPath() {
-        // /community/123 형태에서 숫자 추출
-        const m = window.location.pathname.match(/\/community\/(\d+)/);
-        return m ? parseInt(m[1], 10) : null;
+        // URL이 리다이렉트된 경우를 고려한 ID 추출
+        // 1. 기존 /community/123 형태
+        let m = window.location.pathname.match(/\/community\/(\d+)/);
+        if (m) return parseInt(m[1], 10);
+        
+        // 2. 리다이렉트된 /creator/view-post?id=123 형태
+        m = window.location.pathname.match(/\/creator\/view-post/);
+        if (m) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            return id ? parseInt(id, 10) : null;
+        }
+        
+        return null;
     }
 
     async init() {

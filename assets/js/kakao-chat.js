@@ -94,9 +94,9 @@ if (window.kakaoChatInitialized) {
             });
 
             // 설정 변경 이벤트들
-            const chatRoomNameInput = document.getElementById('chat-room-name');
-            if (chatRoomNameInput) {
-                chatRoomNameInput.addEventListener('input', updateChatRoomName);
+            const updateChatNameBtn = document.getElementById('update-chat-name');
+            if (updateChatNameBtn) {
+                updateChatNameBtn.addEventListener('click', updateChatRoomName);
             }
 
             const chatWidthSlider = document.getElementById('chat-width');

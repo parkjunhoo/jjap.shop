@@ -6,7 +6,7 @@ body {
 .kakao-chat-page {
     min-height: 100vh;
     background-color: #f5f5f5;
-    margin-top: 70px;
+    margin-top: 0;
 }
 
 .kakao-chat-container {

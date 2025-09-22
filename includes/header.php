@@ -15,7 +15,7 @@
     <title><?php echo isset($page_title) ? $page_title : '짭샵 - 크리에이터를 위한 무료 도구 모음 | 카카오톡 대화, 썸네일 텍스트, 커뮤니티, 구인구직'; ?></title>
     <meta name="description" content="<?php echo isset($page_description) ? $page_description : '유튜버, 스트리머, 인플루언서를 위한 무료 온라인 도구! 카카오톡 대화 만들기, 썸네일 텍스트 편집기, OBS 브라우저 소스, 크리에이터 커뮤니티, 구인구직까지 모든 것이 무료!'; ?>">
     <meta name="keywords" content="<?php echo isset($page_keywords) ? $page_keywords : '크리에이터 도구, 유튜버 도구, 스트리머 도구, 카카오톡 대화 만들기, 썸네일 텍스트 편집기, OBS 브라우저 소스, 크리에이터 커뮤니티, 구인구직, 편집자 구인, 멤버 모집, 무료 온라인 도구, 콘텐츠 제작 도구, 짭샵, jjap.shop'; ?>">
-    <meta name="author" content="핵돌핀">
+    <meta name="author" content="짭샵">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
@@ -43,8 +43,12 @@
     <meta name="twitter:title" content="<?php echo isset($page_title) ? $page_title : '짭샵 - 크리에이터를 위한 무료 도구 모음 | 카카오톡 대화, 썸네일 텍스트, 커뮤니티, 구인구직'; ?>">
     <meta name="twitter:description" content="<?php echo isset($page_description) ? $page_description : '유튜버, 스트리머, 인플루언서를 위한 무료 온라인 도구! 카카오톡 대화 만들기, 썸네일 텍스트 편집기, OBS 브라우저 소스, 크리에이터 커뮤니티, 구인구직까지 모든 것이 무료!'; ?>">
     <meta name="twitter:image" content="<?php echo isset($page_image) ? $page_image : 'https://jjap.shop/assets/images/jjapshoplogo.webp'; ?>">
-    <meta name="twitter:creator" content="@핵돌핀">
+    <meta name="twitter:creator" content="@jjap_shop">
     <meta name="twitter:site" content="@jjap_shop">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6901124389391205"
+         crossorigin="anonymous"></script>
     
     <!-- 파비콘 설정 -->
             <link rel="icon" type="image/webp" sizes="16x16" href="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/jjapshoplogo.webp' : '../assets/images/jjapshoplogo.webp'; ?>">
@@ -86,7 +90,7 @@
     <header class="common-header">
         <div class="header-container">
             <div class="header-left">
-                <a href="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? '/' : '/'; ?>" class="home-link">
+                <a href="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? '/' : '/creator'; ?>" class="home-link">
                     <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/jjapshoplogo.webp' : '../assets/images/jjapshoplogo.webp'; ?>" alt="짭샵" class="logo-img">
                     <span class="logo-text">짭샵</span>
                 </a>
@@ -94,23 +98,23 @@
             
             <nav class="header-nav">
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">홈</a></li>
-                    <li><a href="/kakao-chat" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'kakao-chat.php' ? 'active' : ''; ?>">
+                    <li><a href="/creator" class="nav-link">홈</a></li>
+                    <li><a href="/creator/kakao-chat" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'kakao-chat.php' ? 'active' : ''; ?>">
                         <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/kakao.svg' : '../assets/images/kakao.svg'; ?>" alt="카카오톡" class="nav-icon">
                         카카오톡 대화
                     </a></li>
-                    <li><a href="/thumbnail-text" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'thumbnail-text.php' ? 'active' : ''; ?>">
+                    <li><a href="/creator/thumbnail-text" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'thumbnail-text.php' ? 'active' : ''; ?>">
                         <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/font.webp' : '../assets/images/font.webp'; ?>" alt="폰트 편집" class="nav-icon">
                         썸네일 텍스트
                     </a></li>
-                    <li><a href="/obs-browser-source" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'obs-browser-source.php' ? 'active' : ''; ?>">
+                    <li><a href="/creator/obs-browser-source" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'obs-browser-source.php' ? 'active' : ''; ?>">
                         <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/obs.webp' : '../assets/images/obs.webp'; ?>" alt="OBS 브라우저 소스" class="nav-icon">
                         OBS 브라우저 소스
                     </a></li>
-                    <li><a href="/community" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'community.php' ? 'active' : ''; ?>">
+                    <li><a href="/creator/community" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'community.php' ? 'active' : ''; ?>">
                         💬 커뮤니티
                     </a></li>
-                    <li><a href="/job-board" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'job-board.php' ? 'active' : ''; ?>">
+                    <li><a href="/creator/job-board" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'job-board.php' ? 'active' : ''; ?>">
                         🧑‍💼 구인구직
                     </a></li>
                 </ul>
@@ -138,21 +142,21 @@
                 <button class="mobile-menu-close" id="mobileMenuClose" aria-label="모바일 메뉴 닫기">×</button>
             </div>
             <ul class="mobile-nav-list">
-                <li><a href="/">🏠 홈</a></li>
-                <li><a href="/kakao-chat">
+                <li><a href="/creator">🏠 홈</a></li>
+                <li><a href="/creator/kakao-chat">
                     <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/kakao.svg' : '../assets/images/kakao.svg'; ?>" alt="카카오톡" class="mobile-nav-icon">
                     카카오톡 대화
                 </a></li>
-                <li><a href="/thumbnail-text">
+                <li><a href="/creator/thumbnail-text">
                     <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/font.webp' : '../assets/images/font.webp'; ?>" alt="폰트 편집" class="mobile-nav-icon">
                     썸네일 텍스트
                 </a></li>
-                <li><a href="/obs-browser-source">
+                <li><a href="/creator/obs-browser-source">
                     <img src="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'assets/images/obs.webp' : '../assets/images/obs.webp'; ?>" alt="OBS 브라우저 소스" class="mobile-nav-icon">
                     OBS 브라우저 소스
                 </a></li>
-                <li><a href="/community">💬 커뮤니티</a></li>
-                <li><a href="/job-board">🧑‍💼 구인구직</a></li>
+                <li><a href="/creator/community">💬 커뮤니티</a></li>
+                <li><a href="/creator/job-board">🧑‍💼 구인구직</a></li>
             </ul>
         </div>
     </nav>

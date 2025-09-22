@@ -692,7 +692,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentTemplate = textPreview.className.match(/template-\w+/);
             if (currentTemplate) {
                 textClone.className = currentTemplate[0];
-                console.log('적용된 템플릿 클래스:', currentTemplate[0]);
             }
             
             // 스타일 속성 복사
@@ -737,10 +736,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const topPosition = (padding / 2) + (extraPadding / 2);
             
             // 디버깅: Canvas 크기 확인
-            console.log('글로우 패딩:', padding, 'px');
-            console.log('추가 패딩:', extraPadding, 'px');
-            console.log('최종 Canvas 크기:', canvasWidth, 'x', canvasHeight, 'px');
-            console.log('텍스트 위치:', leftPosition, ',', topPosition, 'px');
             
             textClone.style.left = leftPosition + 'px';
             textClone.style.top = topPosition + 'px';
@@ -773,10 +768,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         clonedText.style.minWidth = 'max-content';
                         
                         // 템플릿 클래스 스타일 보존 확인
-                        console.log('클론된 텍스트 클래스:', clonedText.className);
-                        console.log('클론된 텍스트 text-shadow:', clonedText.style.textShadow);
-                        console.log('클론된 텍스트 위치:', clonedText.style.left, ',', clonedText.style.top);
-                        console.log('클론된 텍스트 크기:', clonedText.offsetWidth, 'x', clonedText.offsetHeight);
                     }
                 }
         }).then(canvas => {

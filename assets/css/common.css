@@ -74,6 +74,10 @@ body {
     transition: var(--transition);
 }
 
+.ql-editor {
+    max-height: 50vh;
+}
+
 /* 공용 헤더 스타일 */
 .common-header {
     background-color: var(--bg-primary);
@@ -203,9 +207,9 @@ body {
 
 /* 메인 콘텐츠 */
 .main-content {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 120px);
     padding: 20px;
-    margin-top: 70px;
+    margin-top: 0;
 }
 
 /* 공용 푸터 */

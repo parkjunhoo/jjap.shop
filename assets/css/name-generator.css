@@ -1,0 +1,594 @@
+/* 📝 네이밍 생성기 CSS */
+
+.naming-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.naming-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.naming-header h1 {
+    font-size: 2.5rem;
+    color: #FF9800;
+    margin-bottom: 10px;
+}
+
+.naming-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.naming-main {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* 왼쪽: 컨트롤 섹션 */
+.naming-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.generation-section, .quick-presets {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.generation-section h3, .quick-presets h3 {
+    color: #FF9800;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.option-group select,
+.option-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.option-group select:focus,
+.option-group input:focus {
+    outline: none;
+    border-color: #FF9800;
+}
+
+.option-group small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.generate-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);
+}
+
+.generate-btn .btn-icon {
+    font-size: 1.2rem;
+    animation: none;
+}
+
+.generate-btn.generating .btn-icon {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* 빠른 프리셋 */
+.preset-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.preset-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+}
+
+.preset-btn:hover {
+    border-color: #FF9800;
+    background: #fff8e1;
+    transform: translateY(-2px);
+}
+
+.preset-icon {
+    font-size: 1.2rem;
+}
+
+.preset-name {
+    font-weight: 500;
+    color: #333;
+}
+
+/* 오른쪽: 결과 표시 */
+.naming-display {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.name-results {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+.welcome-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    text-align: center;
+    color: #888;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.welcome-state h3 {
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.4rem;
+}
+
+.welcome-state p {
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.names-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.name-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid #FF9800;
+    animation: slideInUp 0.5s ease;
+    position: relative;
+}
+
+.name-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes slideInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.name-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.name-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    word-break: break-all;
+}
+
+.name-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.name-action-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.name-action-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.name-action-btn.favorited {
+    color: #ffc107;
+}
+
+.name-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.name-tag {
+    background: #e0e0e0;
+    color: #666;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.name-tag.style {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.name-tag.length {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.name-tag.language {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.name-description {
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* 이름 도구 섹션 */
+.name-tools {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tools-header h4 {
+    color: #FF9800;
+    margin-bottom: 15px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.tool-btn {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+}
+
+.tool-btn:hover {
+    border-color: #FF9800;
+    background: #fff8e1;
+    transform: translateY(-2px);
+}
+
+.tool-icon {
+    font-size: 1.1rem;
+}
+
+.tool-text {
+    font-weight: 500;
+    color: #333;
+}
+
+/* 하단: 기능들 */
+.naming-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.favorites-section, .history-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    color: #FF9800;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.btn-clear {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+    background: #d32f2f;
+}
+
+.favorites-list, .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.empty-favorites, .empty-history {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+}
+
+.empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.favorite-item, .history-item {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.favorite-item:hover, .history-item:hover {
+    transform: translateY(-2px);
+}
+
+.favorite-item-header, .history-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.favorite-item-name, .history-item-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.favorite-item-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.favorite-action-btn, .history-action-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.favorite-action-btn:hover, .history-action-btn:hover {
+    background: #f0f0f0;
+}
+
+.favorite-item-info, .history-item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.history-item-stats {
+    display: flex;
+    gap: 10px;
+    font-size: 0.7rem;
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    max-width: 600px;
+    max-height: 80vh;
+    margin: 5% auto;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.modal-header h3 {
+    color: #FF9800;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .naming-main {
+        grid-template-columns: 350px 1fr;
+    }
+}
+
+@media (max-width: 968px) {
+    .naming-main {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .naming-features {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .preset-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .naming-container {
+        padding: 15px;
+    }
+    
+    .naming-header h1 {
+        font-size: 2rem;
+    }
+    
+    .names-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preset-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .name-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .name-actions {
+        align-self: flex-end;
+    }
+    
+    .preset-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

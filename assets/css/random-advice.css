@@ -1,0 +1,362 @@
+/* 🎲 랜덤 조언 생성기 스타일 */
+
+.advice-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.advice-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.advice-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.advice-header p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.advice-main {
+    margin-bottom: 50px;
+}
+
+.advice-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.advice-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: rotate(0deg); opacity: 0.5; }
+    50% { transform: rotate(180deg); opacity: 0.8; }
+}
+
+.advice-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.advice-text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    font-family: "Noto Sans KR", serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.advice-source {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.advice-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76,175,80,0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76,175,80,0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220,53,69,0.4);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220,53,69,0.6);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.advice-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.advice-favorites {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
+
+.advice-favorites h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.favorites-list {
+    margin-bottom: 20px;
+}
+
+.favorite-item {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffeaa7 100%);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ff6b6b;
+    position: relative;
+}
+
+.favorite-item .advice-text {
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    text-shadow: none;
+}
+
+.favorite-item .advice-source {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.favorite-remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #dc3545;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.favorite-remove:hover {
+    opacity: 1;
+}
+
+/* 애니메이션 효과 */
+.advice-card.updating {
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+.advice-card.updated {
+    animation: cardBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes cardBounce {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.favorite-item.removing {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-100%); }
+}
+
+/* 메시지 스타일 */
+.advice-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.advice-message.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.advice-message-success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.advice-message-warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.advice-message-info {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .advice-container {
+        padding: 15px;
+    }
+    
+    .advice-header h1 {
+        font-size: 2rem;
+    }
+    
+    .advice-card {
+        padding: 30px 20px;
+    }
+    
+    .advice-text {
+        font-size: 1.2rem;
+    }
+    
+    .advice-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .advice-stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .advice-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .advice-header p {
+        font-size: 1rem;
+    }
+    
+    .advice-text {
+        font-size: 1.1rem;
+    }
+    
+    .advice-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
