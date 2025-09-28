@@ -134,47 +134,6 @@ if (!isset($canonical_url)) $canonical_url = 'https://jjap.shop/game';
                                 <img src="<?php echo str_repeat('../', substr_count($_SERVER['REQUEST_URI'], '/') - 1); ?>assets/images/valorant/valorant_logo.svg" alt="VALORANT" class="valorant-logo-icon">
                                 발로란트
                             </a>
-                            <div class="dropdown-content">
-                                <div class="dropdown-grid">
-                                    <div class="dropdown-section">
-                                        <div class="dropdown-title">🔥 타격대</div>
-                                        <a href="/game/valorant/agent/네온" class="dropdown-item">네온</a>
-                                        <a href="/game/valorant/agent/레이나" class="dropdown-item">레이나</a>
-                                        <a href="/game/valorant/agent/레이즈" class="dropdown-item">레이즈</a>
-                                        <a href="/game/valorant/agent/아이소" class="dropdown-item">아이소</a>
-                                        <a href="/game/valorant/agent/요루" class="dropdown-item">요루</a>
-                                        <a href="/game/valorant/agent/제트" class="dropdown-item">제트</a>
-                                        <a href="/game/valorant/agent/피닉스" class="dropdown-item">피닉스</a>
-                                    </div>
-                                    <div class="dropdown-section">
-                                        <div class="dropdown-title">🎯 척후대</div>
-                                        <a href="/game/valorant/agent/게코" class="dropdown-item">게코</a>
-                                        <a href="/game/valorant/agent/브리치" class="dropdown-item">브리치</a>
-                                        <a href="/game/valorant/agent/소바" class="dropdown-item">소바</a>
-                                        <a href="/game/valorant/agent/스카이" class="dropdown-item">스카이</a>
-                                        <a href="/game/valorant/agent/케이오" class="dropdown-item">케이오</a>
-                                        <a href="/game/valorant/agent/페이드" class="dropdown-item">페이드</a>
-                                    </div>
-                                    <div class="dropdown-section">
-                                        <div class="dropdown-title">🛡️ 감시자</div>
-                                        <a href="/game/valorant/agent/데드록" class="dropdown-item">데드록</a>
-                                        <a href="/game/valorant/agent/바이스" class="dropdown-item">바이스</a>
-                                        <a href="/game/valorant/agent/사이퍼" class="dropdown-item">사이퍼</a>
-                                        <a href="/game/valorant/agent/세이지" class="dropdown-item">세이지</a>
-                                        <a href="/game/valorant/agent/체임버" class="dropdown-item">체임버</a>
-                                        <a href="/game/valorant/agent/킬조이" class="dropdown-item">킬조이</a>
-                                    </div>
-                                    <div class="dropdown-section">
-                                        <div class="dropdown-title">💨 연막</div>
-                                        <a href="/game/valorant/agent/바이퍼" class="dropdown-item">바이퍼</a>
-                                        <a href="/game/valorant/agent/브림스톤" class="dropdown-item">브림스톤</a>
-                                        <a href="/game/valorant/agent/아스트라" class="dropdown-item">아스트라</a>
-                                        <a href="/game/valorant/agent/오멘" class="dropdown-item">오멘</a>
-                                        <a href="/game/valorant/agent/클로브" class="dropdown-item">클로브</a>
-                                        <a href="/game/valorant/agent/하버" class="dropdown-item">하버</a>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                 </nav>

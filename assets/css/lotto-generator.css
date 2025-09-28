@@ -498,8 +498,8 @@
     }
     
     .lotto-ball {
-        width: 45px;
-        height: 45px;
+        width: 30px;
+        height: 30px;
         font-size: 1rem;
     }
     
@@ -509,7 +509,7 @@
     }
     
     .numbers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+        grid-template-columns: repeat(5, 1fr);
         gap: 0.5rem;
     }
     
@@ -538,7 +538,7 @@
     }
     
     .numbers-grid {
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
     
     .number-btn {

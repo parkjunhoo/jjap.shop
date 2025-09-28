@@ -551,6 +551,11 @@ class ValorantFavorites {
         const modalHTML = `
             <div class="post-modal-overlay" id="postModalOverlay" onclick="valorantFavorites.closePostModal(event)">
                 <div class="post-modal" onclick="event.stopPropagation()">
+                    <div class="modal-close-section">
+                        <button class="modal-close" onclick="valorantFavorites.closePostModal()">
+                                <span>✕</span>
+                        </button>
+                    </div>
                     <div class="modal-header">
                         <div class="modal-agent-info">
                             <img src="/assets/images/valorant/charactor/${post.agent_name}.webp" 
@@ -566,9 +571,6 @@ class ValorantFavorites {
                                 </div>
                             </div>
                         </div>
-                        <button class="modal-close" onclick="valorantFavorites.closePostModal()">
-                            <span>✕</span>
-                        </button>
                     </div>
                     
                     <div class="modal-body">

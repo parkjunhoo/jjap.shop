@@ -69,7 +69,7 @@ $page_js = 'assets/js/horror.js';
                             <span class="shortcut-icon">🧠</span>
                             <span class="shortcut-text">이해하면무서운</span>
                         </a>
-                        <a href="/horror/category/translated-tales" class="shortcut-btn translated-tales">
+                        <a href="/horror/category/translated-horror" class="shortcut-btn translated-tales">
                             <span class="shortcut-icon">🌐</span>
                             <span class="shortcut-text">번역괴담</span>
                         </a>

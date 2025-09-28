@@ -899,6 +899,139 @@ class ValorantAPI {
         }
     }
     
+// 게시글 수정
+public function updatePost() {
+    try {
+        if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
+            $this->sendError('PUT 방식만 지원합니다');
+            return;
+        }
+
+        $pdo = $this->db->getPDO();
+
+        $input = json_decode(file_get_contents('php://input'), true);
+        $postId = (int)($input['id'] ?? 0);
+        $title = trim($input['title'] ?? '');
+        $content = $input['content'] ?? '';
+
+        if (!$postId || !$title || !$content) {
+            $this->sendError('필수 필드(id, title, content)가 필요합니다');
+            return;
+        }
+
+        // 게시글 존재 확인
+        $stmt = $pdo->prepare("SELECT * FROM valorant_posts WHERE id = ?");
+        $stmt->execute([$postId]);
+        $post = $stmt->fetch();
+
+        if (!$post) {
+            $this->sendError('게시글을 찾을 수 없습니다');
+            return;
+        }
+
+        // 세션 인증 확인 (비밀번호는 verify_password에서 이미 검증됨)
+        session_start();
+        $hasSession = isset($_SESSION['valorant_edit_auth'][$postId]) &&
+                     (time() - $_SESSION['valorant_edit_auth'][$postId] <= 600);
+
+        if (!$hasSession) {
+            $this->sendError('인증이 만료되었습니다. 다시 시도해주세요');
+            return;
+        }
+
+        $pdo->beginTransaction();
+
+        $sql = "
+            UPDATE valorant_posts 
+            SET title = ?, content = ?, updated_at = NOW() 
+            WHERE id = ?
+        ";
+
+        $stmt = $pdo->prepare($sql);
+        $success = $stmt->execute([
+            $title,
+            $content,
+            $postId
+        ]);
+
+        if (!$success) {
+            throw new Exception('게시글 수정에 실패했습니다');
+        }
+
+        $pdo->commit();
+
+        // 세션 정리
+        unset($_SESSION['valorant_edit_auth'][$postId]);
+
+        $this->sendSuccess(['message' => '게시글이 성공적으로 수정되었습니다']);
+
+    } catch (Exception $e) {
+        if ($pdo && $pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        $this->sendError('게시글 수정 중 오류 발생', ['error' => $e->getMessage()]);
+    }
+}
+
+
+// 게시글 삭제 (숨김 처리)
+public function deletePost() {
+    try {
+        if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
+            $this->sendError('DELETE 방식만 지원합니다');
+            return;
+        }
+
+        $pdo = $this->db->getPDO();
+
+        $input = json_decode(file_get_contents('php://input'), true);
+        $postId = (int)($input['id'] ?? 0);
+        $password = $input['password'] ?? '';
+
+        if (!$postId || !$password) {
+            $this->sendError('필수 필드(id, password)가 필요합니다');
+            return;
+        }
+
+        // 게시글 존재 및 비밀번호 확인
+        $stmt = $pdo->prepare("SELECT password FROM valorant_posts WHERE id = ?");
+        $stmt->execute([$postId]);
+        $post = $stmt->fetch();
+
+        if (!$post) {
+            $this->sendError('게시글을 찾을 수 없습니다');
+            return;
+        }
+
+        if (!password_verify($password, $post['password'])) {
+            $this->sendError('비밀번호가 올바르지 않습니다');
+            return;
+        }
+
+        $pdo->beginTransaction();
+
+        // 실제 삭제 대신 숨김 처리
+        $sql = "UPDATE valorant_posts SET status = 'hidden', updated_at = NOW() WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $success = $stmt->execute([$postId]);
+
+        if (!$success) {
+            throw new Exception('게시글 삭제에 실패했습니다');
+        }
+
+        $pdo->commit();
+
+        $this->sendSuccess(['message' => '게시글이 성공적으로 삭제되었습니다']);
+
+    } catch (Exception $e) {
+        if ($pdo && $pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        $this->sendError('게시글 삭제 중 오류 발생', ['error' => $e->getMessage()]);
+    }
+}
+
+
     // 댓글 조회
     public function getComments() {
         try {

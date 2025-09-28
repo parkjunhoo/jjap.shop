@@ -99,62 +99,37 @@ async function handleCommentSubmit(e) {
 async function editPost() {
     const password = prompt('게시글 비밀번호를 입력해주세요:');
     if (!password) return;
-    
-    try {
-        const response = await fetch('/api/valorant.php?action=verify_password', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `post_id=${postId}&password=${encodeURIComponent(password)}`
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            window.location.href = `/game/valorant/write?id=${postId}`;
-        } else {
-            alert('비밀번호가 일치하지 않습니다.');
-        }
-    } catch (error) {
-        console.error('비밀번호 확인 오류:', error);
-        alert('오류가 발생했습니다. 다시 시도해주세요.');
+
+    const data = await postRequest('verify_password', { post_id: postId, password });
+    if (!data) return;
+
+    if (data.success) {
+        window.location.href = `/game/valorant/write?id=${postId}`;
+    } else {
+        alert(data.error || '비밀번호 확인 실패');
     }
 }
 
 // 게시글 삭제
 async function deletePost() {
-    if (!confirm('정말로 이 팁을 삭제하시겠습니까?\n삭제된 내용은 복구할 수 없습니다.')) {
-        return;
-    }
-    
+    if (!confirm('정말로 이 팁을 삭제하시겠습니까?\n삭제된 내용은 복구할 수 없습니다.')) return;
+
     const password = prompt('게시글 비밀번호를 입력해주세요:');
     if (!password) return;
-    
-    try {
-        const response = await fetch('/api/valorant.php?action=delete_post', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `post_id=${postId}&password=${encodeURIComponent(password)}`
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            showSuccessMessage('팁이 삭제되었습니다. 게시판으로 이동합니다...');
-            setTimeout(() => {
-                window.location.href = '/game/valorant/board';
-            }, 1500);
-        } else {
-            alert(data.error || '삭제에 실패했습니다.');
-        }
-    } catch (error) {
-        console.error('게시글 삭제 오류:', error);
-        alert('오류가 발생했습니다. 다시 시도해주세요.');
+
+    const data = await postRequest('delete_post', { post_id: postId, password });
+    if (!data) return;
+
+    if (data.success) {
+        showSuccessMessage('팁이 삭제되었습니다. 게시판으로 이동합니다...');
+        setTimeout(() => {
+            window.location.href = '/game/valorant/board';
+        }, 1500);
+    } else {
+        alert(data.error || '삭제에 실패했습니다.');
     }
 }
+
 
 // 게시글 공유
 async function sharePost() {
